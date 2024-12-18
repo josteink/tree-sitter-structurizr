@@ -64,17 +64,7 @@
   {
     "type": "string",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string_content",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "workspace_declaration",
@@ -105,10 +95,6 @@
   },
   {
     "type": "meh_statement",
-    "named": true
-  },
-  {
-    "type": "string_content",
     "named": true
   },
   {

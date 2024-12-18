@@ -73,7 +73,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_content"
+          "name": "_string_content"
         },
         {
           "type": "STRING",
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "string_content": {
+    "_string_content": {
       "type": "TOKEN",
       "content": {
         "type": "PREC",

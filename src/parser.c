@@ -21,7 +21,7 @@ enum ts_symbol_identifiers {
   anon_sym_here = 3,
   anon_sym_there = 4,
   anon_sym_DQUOTE = 5,
-  sym_string_content = 6,
+  sym__string_content = 6,
   anon_sym_workspace = 7,
   sym_dsl = 8,
   sym_statement = 9,
@@ -39,7 +39,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_here] = "here",
   [anon_sym_there] = "there",
   [anon_sym_DQUOTE] = "\"",
-  [sym_string_content] = "string_content",
+  [sym__string_content] = "_string_content",
   [anon_sym_workspace] = "workspace",
   [sym_dsl] = "dsl",
   [sym_statement] = "statement",
@@ -57,7 +57,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_here] = anon_sym_here,
   [anon_sym_there] = anon_sym_there,
   [anon_sym_DQUOTE] = anon_sym_DQUOTE,
-  [sym_string_content] = sym_string_content,
+  [sym__string_content] = sym__string_content,
   [anon_sym_workspace] = anon_sym_workspace,
   [sym_dsl] = sym_dsl,
   [sym_statement] = sym_statement,
@@ -93,8 +93,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [sym_string_content] = {
-    .visible = true,
+  [sym__string_content] = {
+    .visible = false,
     .named = true,
   },
   [anon_sym_workspace] = {
@@ -257,7 +257,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_DQUOTE);
       END_STATE();
     case 27:
-      ACCEPT_TOKEN(sym_string_content);
+      ACCEPT_TOKEN(sym__string_content);
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(27);
       if (lookahead != 0 &&
@@ -266,7 +266,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\\') ADVANCE(28);
       END_STATE();
     case 28:
-      ACCEPT_TOKEN(sym_string_content);
+      ACCEPT_TOKEN(sym__string_content);
       if (lookahead != 0 &&
           lookahead != '"' &&
           lookahead != '$' &&
@@ -399,7 +399,7 @@ static const uint16_t ts_small_parse_table[] = {
       ts_builtin_sym_end,
   [68] = 1,
     ACTIONS(40), 1,
-      sym_string_content,
+      sym__string_content,
   [72] = 1,
     ACTIONS(42), 1,
       anon_sym_DQUOTE,

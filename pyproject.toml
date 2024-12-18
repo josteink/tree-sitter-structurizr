@@ -27,3 +27,4 @@ core = ["tree-sitter~=0.22"]
 [tool.cibuildwheel]
 build = "cp39-*"
 build-frontend = "build"
+ye
