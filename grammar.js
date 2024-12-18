@@ -36,8 +36,8 @@ module.exports = grammar({
       $.positional_statement,
     ),
 
-    string: $ => seq("\"", $.string_content, "\""),
-    string_content: _ => token(prec(-1, /[^"$\\]+/)),
+    string: $ => seq("\"", $._string_content, "\""),
+    _string_content: _ => token(prec(-1, /[^"$\\]+/)),
 
     workspace_declaration: $ => seq(
       "workspace",

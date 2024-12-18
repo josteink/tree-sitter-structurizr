@@ -43,7 +43,5 @@ workspace "gnu" "bar"
 
 (dsl
   (workspace_declaration
-    (string
-      (string_content))
-    (string
-      (string_content))))
+    (string)
+    (string)))
