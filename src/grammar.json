@@ -1,0 +1,126 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "structurizr",
+  "rules": {
+    "dsl": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "statement"
+      }
+    },
+    "statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "hello_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "meh_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "greeting_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "workspace_declaration"
+        }
+      ]
+    },
+    "hello_statement": {
+      "type": "STRING",
+      "value": "hello"
+    },
+    "meh_statement": {
+      "type": "STRING",
+      "value": "meh"
+    },
+    "positional_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "here"
+        },
+        {
+          "type": "STRING",
+          "value": "there"
+        }
+      ]
+    },
+    "greeting_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "hello_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "positional_statement"
+        }
+      ]
+    },
+    "string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_content"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
+    "string_content": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": -1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[^\"$\\\\]+"
+        }
+      }
+    },
+    "workspace_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "workspace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [
+    "statement"
+  ]
+}

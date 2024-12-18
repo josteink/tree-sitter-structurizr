@@ -1,0 +1,122 @@
+[
+  {
+    "type": "statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "greeting_statement",
+        "named": true
+      },
+      {
+        "type": "hello_statement",
+        "named": true
+      },
+      {
+        "type": "meh_statement",
+        "named": true
+      },
+      {
+        "type": "workspace_declaration",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "dsl",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "greeting_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "hello_statement",
+          "named": true
+        },
+        {
+          "type": "positional_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "positional_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "workspace_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "hello_statement",
+    "named": true
+  },
+  {
+    "type": "here",
+    "named": false
+  },
+  {
+    "type": "meh_statement",
+    "named": true
+  },
+  {
+    "type": "string_content",
+    "named": true
+  },
+  {
+    "type": "there",
+    "named": false
+  },
+  {
+    "type": "workspace",
+    "named": false
+  }
+]

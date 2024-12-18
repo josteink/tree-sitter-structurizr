@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "structurizr",
+      "camelcase": "Structurizr",
+      "scope": "source.structurizr",
+      "file-types": [
+        ".dsl"
+      ],
+      "injection-regex": "^structurizr$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Parser for the Structurizr DSL used to support C4 architecture models.",
+    "authors": [
+      {
+        "name": "Jostein Kjønigsen",
+        "email": "jostein@kjonigsen.net",
+        "url": "https://jostein.kjonigsen.net/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/josteink/tree-sitter-structurizr"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}

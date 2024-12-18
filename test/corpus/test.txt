@@ -1,0 +1,49 @@
+====
+Hello test
+====
+
+hello
+
+---
+
+(dsl
+  (hello_statement))
+
+====
+Meh test
+====
+
+meh
+
+---
+
+(dsl
+  (meh_statement))
+
+====
+Greeting test
+====
+
+hello there
+
+---
+
+(dsl
+  (greeting_statement
+    (hello_statement)
+    (positional_statement)))
+
+===
+Workspace test
+===
+
+workspace "gnu" "bar"
+
+---
+
+(dsl
+  (workspace_declaration
+    (string
+      (string_content))
+    (string
+      (string_content))))
