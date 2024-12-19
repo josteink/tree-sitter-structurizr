@@ -1,43 +1,10 @@
-====
-Hello test
-====
-
-hello
-
----
-
-(dsl
-  (hello_statement))
-
-====
-Meh test
-====
-
-meh
-
----
-
-(dsl
-  (meh_statement))
-
-====
-Greeting test
-====
-
-hello there
-
----
-
-(dsl
-  (greeting_statement
-    (hello_statement)
-    (positional_statement)))
 
 ===
-Workspace test
+Empty Workspace
 ===
 
-workspace "gnu" "bar"
+workspace "gnu" "bar" {
+}
 
 ---
 
@@ -45,3 +12,43 @@ workspace "gnu" "bar"
   (workspace_declaration
     (string)
     (string)))
+
+===
+Workspace with empty model
+===
+
+workspace "gnu" "bar" {
+  model {
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration)))
+      
+
+===
+Workspace with model & relation
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu -> bar "test"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (relation_statement
+        (identifier)
+        (identifier)
+        (string)))))

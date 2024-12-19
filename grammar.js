@@ -11,38 +11,60 @@ module.exports = grammar({
   name: "structurizr",
 
   supertypes: $ => [
-    $.statement
+    $.workspace_item_statement
   ],
 
   rules: {
 
-    dsl: $ => repeat($.statement),
-
-    statement: $ => choice(
-      $.hello_statement,
-      $.meh_statement,
-      $.greeting_statement,
-      $.workspace_declaration,
-    ),
-
-    hello_statement: $ => "hello",
-
-    meh_statement: $ => "meh",
-
-    positional_statement: _ => choice("here", "there"),
-
-    greeting_statement: $ => seq(
-      $.hello_statement,
-      $.positional_statement,
-    ),
-
-    string: $ => seq("\"", $._string_content, "\""),
-    _string_content: _ => token(prec(-1, /[^"$\\]+/)),
+    dsl: $ => repeat1($.workspace_declaration),
 
     workspace_declaration: $ => seq(
       "workspace",
       $.string,
-      $.string
+      $.string,
+      "{",
+      repeat($.workspace_item_statement),
+      "}",
+    ),
+
+    string: $ => seq("\"", $._string_content, "\""),
+    _string_content: _ => token(prec(-1, /[^"$\\]+/)),
+    identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
+    _assignment_operator: _ => "=",
+    _relation_operator: _ => "->",
+
+    workspace_item_statement: $ => choice(
+      $.model_declaration,
+      // tood: view statement, etc
+    ),
+
+    model_declaration: $ => seq(
+      "model",
+      "{",
+      repeat($._model_item_statement),
+      "}",
+    ),
+
+    _model_item_statement: $ => choice(
+      $.assignment_statement,
+      $.relation_statement,
+    ),
+
+    assignment_statement: $ => seq(
+      field("name", $.identifier),
+      $._assignment_operator,
+      field("value", $._item_declaration),
+    ),
+
+    relation_statement: $ => seq(
+      field("source", $.identifier),
+      $._relation_operator,
+      field("target", $.identifier),
+      field("relation", $.string),
+    ),
+
+    _item_declaration: $ => choice(
+
     ),
   }
 });
