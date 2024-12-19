@@ -74,3 +74,189 @@ workspace "gnu" "bar" {
         (relation_identifier)
         (relation_identifier)
         (string)))))
+
+===
+Workspace with model & softwareSystem
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu = softwareSystem "bar"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string))))))
+
+===
+Workspace with model & container
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu = container "bar"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string))))))
+
+===
+Workspace with model, softwareSystem & container
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu = softwareSystem "bar" {
+       foo = container "baz"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+          (software_system_declaration
+            (string)
+            (variable_declaration
+              (identifier)
+              (container_declaration
+                (string))))))))
+
+===
+Workspace with model, softwareSystem & containers
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu = softwareSystem "bar" {
+       foo = container "baz"
+       zoo = container "haz"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+          (software_system_declaration
+            (string)
+            (variable_declaration
+              (identifier)
+              (container_declaration
+                (string)))
+            (variable_declaration
+              (identifier)
+              (container_declaration
+                (string))))))))
+
+===
+Workspace with model & person
+===
+
+workspace "gnu" "bar" {
+  model {
+    bob = person "Bob"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+          (person_declaration
+            (string))))))
+
+===
+Workspace with complex model
+===
+
+workspace "gnu" "bar" {
+  model {
+    bob = person "Bob"
+    ss = softwareSystem "Soft" {
+      api = container "api"
+      web = container "web"
+    }
+    email = softwareSystem "Email"
+
+    bob -> ss.web "Uses"
+    ss.web -> ss.api "Invokes"
+    ss.api -> email "Sends notification"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (person_declaration
+          (string)))
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string)
+          (variable_declaration
+            (identifier)
+            (container_declaration
+              (string)))
+          (variable_declaration
+            (identifier)
+            (container_declaration
+              (string)))))
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string)))
+      (relation_statement
+        (relation_identifier)
+        (relation_identifier)
+        (string))
+      (relation_statement
+        (relation_identifier)
+        (relation_identifier)
+        (string))
+      (relation_statement
+        (relation_identifier)
+        (relation_identifier)
+        (string)))))

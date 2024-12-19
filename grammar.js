@@ -56,11 +56,11 @@ module.exports = grammar({
     ),
 
     _model_item_statement: $ => choice(
-      $.assignment_statement,
+      $.variable_declaration,
       $.relation_statement,
     ),
 
-    assignment_statement: $ => seq(
+    variable_declaration: $ => seq(
       field("name", $.identifier),
       $._assignment_operator,
       field("value", $._item_declaration),
@@ -74,7 +74,34 @@ module.exports = grammar({
     ),
 
     _item_declaration: $ => choice(
+      $.software_system_declaration,
+      $.container_declaration,
+      $.person_declaration,
+    ),
 
+    software_system_declaration: $ => seq(
+      "softwareSystem",
+      field("description", $.string),
+      optional(seq(
+        "{",
+        repeat($._model_item_statement),
+        "}",
+      )),
+    ),
+
+    container_declaration: $ => seq(
+      "container",
+      field("description", $.string),
+      optional(seq(
+        "{",
+        $._item_declaration,
+        "}",
+      )),
+    ),
+
+    person_declaration: $ => seq(
+      "person",
+      $.string,
     ),
   }
 });
