@@ -161,6 +161,10 @@
         {
           "type": "SYMBOL",
           "name": "relation_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tags_declaration"
         }
       ]
     },
@@ -310,8 +314,11 @@
                   "value": "{"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_item_declaration"
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_model_item_statement"
+                  }
                 },
                 {
                   "type": "STRING",
@@ -336,6 +343,26 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        }
+      ]
+    },
+    "tags_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tags"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_assignment_operator"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
         }
       ]
     }

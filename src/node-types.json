@@ -25,19 +25,19 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "container_declaration",
+          "type": "relation_statement",
           "named": true
         },
         {
-          "type": "person_declaration",
+          "type": "tags_declaration",
           "named": true
         },
         {
-          "type": "software_system_declaration",
+          "type": "variable_declaration",
           "named": true
         }
       ]
@@ -74,6 +74,10 @@
       "types": [
         {
           "type": "relation_statement",
+          "named": true
+        },
+        {
+          "type": "tags_declaration",
           "named": true
         },
         {
@@ -163,6 +167,10 @@
           "named": true
         },
         {
+          "type": "tags_declaration",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -173,6 +181,21 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "tags_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "variable_declaration",
@@ -257,6 +280,10 @@
   },
   {
     "type": "softwareSystem",
+    "named": false
+  },
+  {
+    "type": "tags",
     "named": false
   },
   {
