@@ -11,7 +11,8 @@ module.exports = grammar({
   name: "structurizr",
 
   supertypes: $ => [
-    $.workspace_item_statement
+    $.workspace_item_statement,
+    $.relation_identifier,
   ],
 
   rules: {
@@ -30,15 +31,15 @@ module.exports = grammar({
     string: $ => seq("\"", $._string_content, "\""),
     _string_content: _ => token(prec(-1, /[^"$\\]+/)),
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
-    _dotted_identifier: $ => seq(
-      $._simple_identifier,
+    dotted_identifier: $ => seq(
+      field("parent", $.identifier),
       ".",
-      $._simple_identifier,
+      field("child", $.identifier),
     ),
     identifier: $ => $._simple_identifier,
     relation_identifier: $ => choice(
-      $._simple_identifier,
-      $._dotted_identifier,
+      $.identifier,
+      $.dotted_identifier
     ),
     _assignment_operator: _ => "=",
     _relation_operator: _ => "->",

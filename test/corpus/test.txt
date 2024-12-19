@@ -49,8 +49,8 @@ workspace "gnu" "bar" {
     (string)
     (model_declaration
       (relation_statement
-        (relation_identifier)
-        (relation_identifier)
+        (identifier)
+        (identifier)
         (string)))))
 
 ===
@@ -71,8 +71,8 @@ workspace "gnu" "bar" {
     (string)
     (model_declaration
       (relation_statement
-        (relation_identifier)
-        (relation_identifier)
+        (dotted_identifier (identifier) (identifier))
+        (dotted_identifier (identifier) (identifier))
         (string)))))
 
 ===
@@ -249,16 +249,16 @@ workspace "gnu" "bar" {
         (software_system_declaration
           (string)))
       (relation_statement
-        (relation_identifier)
-        (relation_identifier)
+        (identifier)
+        (dotted_identifier (identifier) (identifier))
         (string))
       (relation_statement
-        (relation_identifier)
-        (relation_identifier)
+        (dotted_identifier (identifier) (identifier))
+        (dotted_identifier (identifier) (identifier))
         (string))
       (relation_statement
-        (relation_identifier)
-        (relation_identifier)
+        (dotted_identifier (identifier) (identifier))
+        (identifier)
         (string)))))
 
 ===
