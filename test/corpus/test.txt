@@ -49,6 +49,28 @@ workspace "gnu" "bar" {
     (string)
     (model_declaration
       (relation_statement
-        (identifier)
-        (identifier)
+        (relation_identifier)
+        (relation_identifier)
+        (string)))))
+
+===
+Workspace with model & inner relation
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu.child -> bar.prop "test"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (relation_statement
+        (relation_identifier)
+        (relation_identifier)
         (string)))))

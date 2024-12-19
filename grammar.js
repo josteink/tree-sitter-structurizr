@@ -29,7 +29,17 @@ module.exports = grammar({
 
     string: $ => seq("\"", $._string_content, "\""),
     _string_content: _ => token(prec(-1, /[^"$\\]+/)),
-    identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
+    _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
+    _dotted_identifier: $ => seq(
+      $._simple_identifier,
+      ".",
+      $._simple_identifier,
+    ),
+    identifier: $ => $._simple_identifier,
+    relation_identifier: $ => choice(
+      $._simple_identifier,
+      $._dotted_identifier,
+    ),
     _assignment_operator: _ => "=",
     _relation_operator: _ => "->",
 
@@ -57,9 +67,9 @@ module.exports = grammar({
     ),
 
     relation_statement: $ => seq(
-      field("source", $.identifier),
+      field("source", $.relation_identifier),
       $._relation_operator,
-      field("target", $.identifier),
+      field("target", $.relation_identifier),
       field("relation", $.string),
     ),
 
