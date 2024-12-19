@@ -50,6 +50,10 @@ module.exports = grammar({
 
     model_declaration: $ => seq(
       "model",
+      $._model_children,
+    ),
+
+    _model_children: $ => seq(
       "{",
       repeat($._model_item_statement),
       "}",
@@ -83,22 +87,20 @@ module.exports = grammar({
     software_system_declaration: $ => seq(
       "softwareSystem",
       field("description", $.string),
-      optional(seq(
-        "{",
-        repeat($._model_item_statement),
-        "}",
-      )),
+      optional($._model_children),
     ),
 
     container_declaration: $ => seq(
       "container",
       field("description", $.string),
-      optional(seq(
-        "{",
-        repeat($._model_item_statement),
-        "}",
-      )),
+      optional($._model_children),
     ),
+
+    _optional_children: $ => optional(seq(
+      "{",
+      repeat($._model_item_statement),
+      "}",
+    )),
 
     person_declaration: $ => seq(
       "person",
