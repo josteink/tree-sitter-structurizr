@@ -260,3 +260,39 @@ workspace "gnu" "bar" {
         (relation_identifier)
         (relation_identifier)
         (string)))))
+
+===
+Workspace with tagged item
+===
+
+workspace "gnu" "bar" {
+  model {
+    api = container "asp.net core" {
+      tags = "OAuth" "NET8"
+    }
+    db = container "sqlite" {
+      tags = "Database"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (tags_declaration
+            (string)
+            (string))))
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (tags_declaration
+            (string)))))))

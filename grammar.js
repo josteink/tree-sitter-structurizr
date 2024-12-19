@@ -58,6 +58,7 @@ module.exports = grammar({
     _model_item_statement: $ => choice(
       $.variable_declaration,
       $.relation_statement,
+      $.tags_declaration,
     ),
 
     variable_declaration: $ => seq(
@@ -94,7 +95,7 @@ module.exports = grammar({
       field("description", $.string),
       optional(seq(
         "{",
-        $._item_declaration,
+        repeat($._model_item_statement),
         "}",
       )),
     ),
@@ -102,6 +103,12 @@ module.exports = grammar({
     person_declaration: $ => seq(
       "person",
       $.string,
+    ),
+
+    tags_declaration: $ => seq(
+      "tags",
+      $._assignment_operator,
+      repeat1($.string),
     ),
   }
 });
