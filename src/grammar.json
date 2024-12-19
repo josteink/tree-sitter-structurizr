@@ -76,20 +76,28 @@
         "value": "[a-zA-Z_*][a-zA-Z0-9_]*"
       }
     },
-    "_dotted_identifier": {
+    "dotted_identifier": {
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_simple_identifier"
+          "type": "FIELD",
+          "name": "parent",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "STRING",
           "value": "."
         },
         {
-          "type": "SYMBOL",
-          "name": "_simple_identifier"
+          "type": "FIELD",
+          "name": "child",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         }
       ]
     },
@@ -102,11 +110,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_simple_identifier"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
-          "name": "_dotted_identifier"
+          "name": "dotted_identifier"
         }
       ]
     },
@@ -383,6 +391,7 @@
   "externals": [],
   "inline": [],
   "supertypes": [
-    "workspace_item_statement"
+    "workspace_item_statement",
+    "relation_identifier"
   ]
 }

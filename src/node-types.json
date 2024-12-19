@@ -1,5 +1,19 @@
 [
   {
+    "type": "relation_identifier",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "dotted_identifier",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "workspace_item_statement",
     "named": true,
     "subtypes": [
@@ -41,6 +55,32 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "dotted_identifier",
+    "named": true,
+    "fields": {
+      "child": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parent": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -101,11 +141,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "relation_identifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "relation_statement",
