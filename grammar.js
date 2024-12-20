@@ -31,6 +31,7 @@ module.exports = grammar({
     $.workspace_item_statement,
     $.relation_identifier,
     $.configuration_item_statement,
+    $.views_item_statement,
   ],
 
   rules: {
@@ -148,5 +149,34 @@ module.exports = grammar({
       keyword("scope"),
       field("value", $._simple_identifier),
     ),
+
+    views_declaration: $ => seq(
+      keyword("views"),
+      "{",
+      repeat($.views_item_statement),
+      "}"
+    ),
+
+    views_item_statement: $ => choice(
+      $.system_context_view_declaration,
+      // TODO: what about naming for container... will crash!
+    ),
+
+    system_context_view_declaration: $ => seq(
+      keyword("systemcontext"),
+      field("context", $.identifier),
+      field("description", $.string),
+      "{",
+      repeat($.view_property_statement),
+      "}",
+    ),
+
+    view_property_statement: $ => choice(
+
+    ),
+
+    // TODO: systemContext
+    // TODO: container
+    // TODO: styles
   }
 });

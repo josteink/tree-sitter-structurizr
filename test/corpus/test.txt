@@ -333,3 +333,41 @@ workspace "gnu" "bar" {
     (configuration_declaration
       (scope_declaration))))
 
+===
+Workspace with empty views statement
+===
+
+workspace "gnu" "bar" {
+  views {
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration)))
+
+===
+Workspace with views and system-context
+===
+
+workspace "gnu" "bar" {
+  views {
+    systemContext so "test" {
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (system_context_view_declaration
+        (identifier)
+        (string)))))
