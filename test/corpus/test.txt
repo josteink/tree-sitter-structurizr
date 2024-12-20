@@ -296,3 +296,40 @@ workspace "gnu" "bar" {
           (string)
           (tags_declaration
             (string)))))))
+
+===
+Workspace with configuration
+===
+
+workspace "gnu" "bar" {
+  configuration {
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (configuration_declaration)))
+
+===
+Workspace with configuration & scope
+===
+
+workspace "gnu" "bar" {
+  configuration {
+    scope softwareSystem
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (configuration_declaration
+      (scope_declaration))))
+

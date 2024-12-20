@@ -13,6 +13,7 @@ module.exports = grammar({
   supertypes: $ => [
     $.workspace_item_statement,
     $.relation_identifier,
+    $.configuration_item_statement,
   ],
 
   rules: {
@@ -46,6 +47,7 @@ module.exports = grammar({
 
     workspace_item_statement: $ => choice(
       $.model_declaration,
+      $.configuration_declaration,
       // tood: view statement, etc
     ),
 
@@ -112,6 +114,22 @@ module.exports = grammar({
       "tags",
       $._assignment_operator,
       repeat1($.string),
+    ),
+
+    configuration_declaration: $ => seq(
+      "configuration",
+      "{",
+      repeat($.configuration_item_statement),
+      "}",
+    ),
+
+    configuration_item_statement: $ => choice(
+      $.scope_declaration,
+    ),
+
+    scope_declaration: $ => seq(
+      "scope",
+      field("value", $._simple_identifier),
     ),
   }
 });
