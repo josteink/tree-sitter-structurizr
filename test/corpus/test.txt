@@ -493,3 +493,29 @@ workspace "gnu" "bar" {
           (element_property
             (identifier)
             (number)))))))
+
+===
+Workspace with identifiers statement
+===
+
+workspace "gnu" "bar" {
+  !identifiers flat
+}
+
+workspace "gnu" "bar" {
+  !identifiers hierarchical
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (identifiers_statement
+      (identifiers_value)))
+  (workspace_declaration
+    (string)
+    (string)
+    (identifiers_statement
+      (identifiers_value))))

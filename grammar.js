@@ -68,9 +68,21 @@ module.exports = grammar({
     _newline: _ => /\n/,
 
     workspace_item_statement: $ => choice(
+      $.identifiers_statement,
       $.model_declaration,
       $.configuration_declaration,
       $.views_declaration,
+    ),
+
+    // https://docs.structurizr.com/dsl/language#identifiers
+    identifiers_statement: $ => seq(
+      keyword("!identifiers"),
+      field("value", $.identifiers_value), g
+    ),
+
+    identifiers_value: _ => choice(
+      "hierarchical",
+      "flat",
     ),
 
     model_declaration: $ => seq(
