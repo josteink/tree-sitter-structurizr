@@ -365,6 +365,10 @@
       "required": true,
       "types": [
         {
+          "type": "dotted_identifier",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         }
@@ -405,6 +409,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "dotted_identifier",
+          "named": true
+        },
         {
           "type": "identifier",
           "named": true
