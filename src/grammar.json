@@ -13,8 +13,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "workspace"
+          "type": "PATTERN",
+          "value": "[wW][oO][rR][kK][sS][pP][aA][cC][eE]"
         },
         {
           "type": "SYMBOL",
@@ -40,6 +40,13 @@
           "value": "}"
         }
       ]
+    },
+    "number": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[0-9]+"
+      }
     },
     "string": {
       "type": "SEQ",
@@ -126,6 +133,10 @@
       "type": "STRING",
       "value": "->"
     },
+    "_newline": {
+      "type": "PATTERN",
+      "value": "\\n"
+    },
     "workspace_item_statement": {
       "type": "CHOICE",
       "members": [
@@ -136,6 +147,10 @@
         {
           "type": "SYMBOL",
           "name": "configuration_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "views_declaration"
         }
       ]
     },
@@ -143,8 +158,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "model"
+          "type": "PATTERN",
+          "value": "[mM][oO][dD][eE][lL]"
         },
         {
           "type": "SYMBOL",
@@ -268,8 +283,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "softwareSystem"
+          "type": "PATTERN",
+          "value": "[sS][oO][fF][tT][wW][aA][rR][eE][sS][yY][sS][tT][eE][mM]"
         },
         {
           "type": "FIELD",
@@ -297,8 +312,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "container"
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
         },
         {
           "type": "FIELD",
@@ -354,8 +369,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "person"
+          "type": "PATTERN",
+          "value": "[pP][eE][rR][sS][oO][nN]"
         },
         {
           "type": "SYMBOL",
@@ -387,8 +402,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "configuration"
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
         },
         {
           "type": "STRING",
@@ -420,8 +435,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "scope"
+          "type": "PATTERN",
+          "value": "[sS][cC][oO][pP][eE]"
         },
         {
           "type": "FIELD",
@@ -430,6 +445,306 @@
             "type": "SYMBOL",
             "name": "_simple_identifier"
           }
+        }
+      ]
+    },
+    "views_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[vV][iI][eE][wW][sS]"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "views_item_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "views_item_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "system_context_view_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "container_view_declaration"
+        }
+      ]
+    },
+    "system_context_view_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[sS][yY][sS][tT][eE][mM][cC][oO][nN][tT][eE][xX][tT]"
+        },
+        {
+          "type": "FIELD",
+          "name": "context",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "description",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "view_property_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "view_property_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "include_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "exclude_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "autolayout_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "default_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description_statement"
+        }
+      ]
+    },
+    "include_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[iI][nN][cC][lL][uU][dD][eE]"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "*"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "exclude_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[eE][xX][cC][lL][uU][dD][eE]"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "autolayout_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[aA][uU][tT][oO][lL][aA][yY][oO][uU][tT]"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "autolayout_value"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "rankSeparation",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "number"
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "nodeSeparation",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "number"
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "autolayout_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[lL][rR]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[rR][lL]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[tT][bB]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[bB][tT]"
+        }
+      ]
+    },
+    "default_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[dD][eE][fF][aA][uU][lL][tT]"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "description_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "container_view_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+        },
+        {
+          "type": "FIELD",
+          "name": "context",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "description",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "view_property_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     }
@@ -447,6 +762,8 @@
   "supertypes": [
     "workspace_item_statement",
     "relation_identifier",
-    "configuration_item_statement"
+    "configuration_item_statement",
+    "views_item_statement",
+    "view_property_statement"
   ]
 }

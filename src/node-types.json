@@ -24,6 +24,46 @@
     ]
   },
   {
+    "type": "view_property_statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "autolayout_statement",
+        "named": true
+      },
+      {
+        "type": "default_statement",
+        "named": true
+      },
+      {
+        "type": "description_statement",
+        "named": true
+      },
+      {
+        "type": "exclude_statement",
+        "named": true
+      },
+      {
+        "type": "include_statement",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "views_item_statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "container_view_declaration",
+        "named": true
+      },
+      {
+        "type": "system_context_view_declaration",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "workspace_item_statement",
     "named": true,
     "subtypes": [
@@ -34,8 +74,53 @@
       {
         "type": "model_declaration",
         "named": true
+      },
+      {
+        "type": "views_declaration",
+        "named": true
       }
     ]
+  },
+  {
+    "type": "autolayout_statement",
+    "named": true,
+    "fields": {
+      "nodeSeparation": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "rankSeparation": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "autolayout_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "autolayout_value",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "configuration_declaration",
@@ -87,6 +172,62 @@
     }
   },
   {
+    "type": "container_view_declaration",
+    "named": true,
+    "fields": {
+      "context": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "description": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "view_property_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "default_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "description_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "dotted_identifier",
     "named": true,
     "fields": {
@@ -129,9 +270,39 @@
     }
   },
   {
+    "type": "exclude_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "include_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "model_declaration",
@@ -252,6 +423,42 @@
     "fields": {}
   },
   {
+    "type": "system_context_view_declaration",
+    "named": true,
+    "fields": {
+      "context": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "description": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "view_property_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "tags_declaration",
     "named": true,
     "fields": {},
@@ -301,6 +508,21 @@
     }
   },
   {
+    "type": "views_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "views_item_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "workspace_declaration",
     "named": true,
     "fields": {},
@@ -324,6 +546,10 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
     "type": "->",
     "named": false
   },
@@ -336,35 +562,11 @@
     "named": false
   },
   {
-    "type": "configuration",
-    "named": false
-  },
-  {
-    "type": "container",
-    "named": false
-  },
-  {
-    "type": "model",
-    "named": false
-  },
-  {
-    "type": "person",
-    "named": false
-  },
-  {
-    "type": "scope",
-    "named": false
-  },
-  {
-    "type": "softwareSystem",
-    "named": false
+    "type": "number",
+    "named": true
   },
   {
     "type": "tags",
-    "named": false
-  },
-  {
-    "type": "workspace",
     "named": false
   },
   {
