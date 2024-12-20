@@ -7,6 +7,23 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+// creates a case-insensitive match for the keyword.
+// structurizr is case-insensitive!
+// https://docs.structurizr.com/dsl/basics#dsl-rules
+function keyword(value) {
+  return new RegExp(
+    value
+      .split("")
+      .map((char) => {
+        if (/[a-zA-Z]/.test(char)) {
+          return `[${char.toLowerCase()}${char.toUpperCase()}]`;
+        }
+        return char;
+      })
+      .join("")
+  );
+}
+
 module.exports = grammar({
   name: "structurizr",
 
@@ -21,7 +38,7 @@ module.exports = grammar({
     dsl: $ => repeat1($.workspace_declaration),
 
     workspace_declaration: $ => seq(
-      "workspace",
+      keyword("workspace"),
       $.string,
       $.string,
       "{",
@@ -48,11 +65,11 @@ module.exports = grammar({
     workspace_item_statement: $ => choice(
       $.model_declaration,
       $.configuration_declaration,
-      // tood: view statement, etc
+      $.views_declaration,
     ),
 
     model_declaration: $ => seq(
-      "model",
+      keyword("model"),
       $._model_children,
     ),
 
@@ -88,13 +105,13 @@ module.exports = grammar({
     ),
 
     software_system_declaration: $ => seq(
-      "softwareSystem",
+      keyword("softwareSystem"),
       field("description", $.string),
       optional($._model_children),
     ),
 
     container_declaration: $ => seq(
-      "container",
+      keyword("container"),
       field("description", $.string),
       optional($._model_children),
     ),
@@ -106,18 +123,18 @@ module.exports = grammar({
     )),
 
     person_declaration: $ => seq(
-      "person",
+      keyword("person"),
       $.string,
     ),
 
     tags_declaration: $ => seq(
-      "tags",
+      "tags", // TODO: make case-insensitive... somehow!
       $._assignment_operator,
       repeat1($.string),
     ),
 
     configuration_declaration: $ => seq(
-      "configuration",
+      keyword("configuration"),
       "{",
       repeat($.configuration_item_statement),
       "}",
@@ -128,7 +145,7 @@ module.exports = grammar({
     ),
 
     scope_declaration: $ => seq(
-      "scope",
+      keyword("scope"),
       field("value", $._simple_identifier),
     ),
   }
