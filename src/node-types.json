@@ -86,6 +86,10 @@
         "named": true
       },
       {
+        "type": "identifiers_statement",
+        "named": true
+      },
+      {
         "type": "model_declaration",
         "named": true
       },
@@ -360,6 +364,27 @@
   },
   {
     "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "identifiers_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifiers_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "identifiers_value",
     "named": true,
     "fields": {}
   },
@@ -648,6 +673,14 @@
   },
   {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "flat",
+    "named": false
+  },
+  {
+    "type": "hierarchical",
     "named": false
   },
   {

@@ -142,6 +142,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "identifiers_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "model_declaration"
         },
         {
@@ -151,6 +155,36 @@
         {
           "type": "SYMBOL",
           "name": "views_declaration"
+        }
+      ]
+    },
+    "identifiers_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "![iI][dD][eE][nN][tT][iI][fF][iI][eE][rR][sS]"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifiers_value"
+          }
+        }
+      ]
+    },
+    "identifiers_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "hierarchical"
+        },
+        {
+          "type": "STRING",
+          "value": "flat"
         }
       ]
     },
