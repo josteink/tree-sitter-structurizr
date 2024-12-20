@@ -141,6 +141,11 @@
     "fields": {}
   },
   {
+    "type": "color",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "configuration_declaration",
     "named": true,
     "fields": {},
@@ -331,6 +336,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "color",
+            "named": true
+          },
           {
             "type": "identifier",
             "named": true

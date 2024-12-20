@@ -137,6 +137,19 @@
       "type": "PATTERN",
       "value": "\\n"
     },
+    "color": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#[0-9a-zA-Z]{3}"
+        },
+        {
+          "type": "PATTERN",
+          "value": "#[0-9a-zA-Z]{6}"
+        }
+      ]
+    },
     "workspace_item_statement": {
       "type": "CHOICE",
       "members": [
@@ -879,6 +892,10 @@
               {
                 "type": "SYMBOL",
                 "name": "number"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "color"
               }
             ]
           }
