@@ -1,5 +1,15 @@
 [
   {
+    "type": "configuration_item_statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "scope_declaration",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "relation_identifier",
     "named": true,
     "subtypes": [
@@ -18,10 +28,29 @@
     "named": true,
     "subtypes": [
       {
+        "type": "configuration_declaration",
+        "named": true
+      },
+      {
         "type": "model_declaration",
         "named": true
       }
     ]
+  },
+  {
+    "type": "configuration_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "configuration_item_statement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "container_declaration",
@@ -179,6 +208,11 @@
     }
   },
   {
+    "type": "scope_declaration",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "software_system_declaration",
     "named": true,
     "fields": {
@@ -302,6 +336,10 @@
     "named": false
   },
   {
+    "type": "configuration",
+    "named": false
+  },
+  {
     "type": "container",
     "named": false
   },
@@ -311,6 +349,10 @@
   },
   {
     "type": "person",
+    "named": false
+  },
+  {
+    "type": "scope",
     "named": false
   },
   {

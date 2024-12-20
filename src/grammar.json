@@ -132,6 +132,10 @@
         {
           "type": "SYMBOL",
           "name": "model_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "configuration_declaration"
         }
       ]
     },
@@ -378,6 +382,56 @@
           }
         }
       ]
+    },
+    "configuration_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "configuration"
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "configuration_item_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "configuration_item_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "scope_declaration"
+        }
+      ]
+    },
+    "scope_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "scope"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_simple_identifier"
+          }
+        }
+      ]
     }
   },
   "extras": [
@@ -392,6 +446,7 @@
   "inline": [],
   "supertypes": [
     "workspace_item_statement",
-    "relation_identifier"
+    "relation_identifier",
+    "configuration_item_statement"
   ]
 }
