@@ -399,8 +399,8 @@ Workspace with views, system-context & properties
 workspace "gnu" "bar" {
   views {
     systemContext so "test" {
-      include * gnu
-      exclude bar
+      include * gnu gnu.bar
+      exclude bar bar.code
       autolayout lr
     }
   }
@@ -417,9 +417,11 @@ workspace "gnu" "bar" {
         (identifier)
         (string)
         (include_statement
-          (identifier))
+          (identifier)
+          (dotted_identifier (identifier) (identifier)))
         (exclude_statement
-          (identifier))
+          (identifier)
+          (dotted_identifier (identifier) (identifier)))
         (autolayout_statement
           (autolayout_value))))))
 

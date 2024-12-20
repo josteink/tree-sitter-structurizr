@@ -204,14 +204,20 @@ module.exports = grammar({
       keyword("include"),
       repeat1(choice(
         "*",
-        $.identifier,
+        choice(
+          $.identifier,
+          $.dotted_identifier,
+        ),
       )),
       $._newline,
     ),
 
     exclude_statement: $ => seq(
       keyword("exclude"),
-      repeat1($.identifier),
+      repeat1(choice(
+        $.identifier,
+        $.dotted_identifier,
+      )),
       $._newline,
     ),
 
