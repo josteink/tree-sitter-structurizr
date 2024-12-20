@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "nodemon": "^3.1.9",
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.22.1",
     "tree-sitter-cli": "^0.24.4"
@@ -50,6 +51,7 @@
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
-    "test-parse": "tree-sitter generate && tree-sitter build && tree-sitter test"
+    "test-parse": "tree-sitter generate && tree-sitter build && tree-sitter test",
+    "watch": "nodemon -w . -w test/corpus -e js,txt -x 'npm run test-parse'"
   }
 }
