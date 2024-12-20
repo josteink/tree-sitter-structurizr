@@ -66,6 +66,10 @@ module.exports = grammar({
     _assignment_operator: _ => "=",
     _relation_operator: _ => "->",
     _newline: _ => /\n/,
+    color: _ => choice(
+      /#[0-9a-zA-Z]{3}/,
+      /#[0-9a-zA-Z]{6}/,
+    ),
 
     workspace_item_statement: $ => choice(
       $.identifiers_statement,
@@ -77,7 +81,7 @@ module.exports = grammar({
     // https://docs.structurizr.com/dsl/language#identifiers
     identifiers_statement: $ => seq(
       keyword("!identifiers"),
-      field("value", $.identifiers_value), g
+      field("value", $.identifiers_value),
     ),
 
     identifiers_value: _ => choice(
@@ -274,6 +278,7 @@ module.exports = grammar({
         $.identifier,
         $.string,
         $.number,
+        $.color,
       )),
       $._newline,
     )

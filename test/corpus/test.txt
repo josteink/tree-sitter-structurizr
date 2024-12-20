@@ -469,6 +469,7 @@ workspace "gnu" "bar" {
         prop1 "string"
         prop2 identifier
         prop3 200
+        color #ffffff
       }
     }
   }
@@ -492,7 +493,10 @@ workspace "gnu" "bar" {
             (identifier))
           (element_property
             (identifier)
-            (number)))))))
+            (number))
+          (element_property
+            (identifier)
+            (color)))))))
 
 ===
 Workspace with identifiers statement
