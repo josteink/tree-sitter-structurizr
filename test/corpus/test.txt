@@ -402,3 +402,37 @@ workspace "gnu" "bar" {
           (identifier))
         (autolayout_statement
           (autolayout_value))))))
+
+===
+Workspace with views, container & properties
+===
+
+workspace "gnu" "bar" {
+  views {
+    container so "test" {
+      include * gnu
+      exclude bar
+      autolayout lr
+      description "well hello"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (container_view_declaration
+        (identifier)
+        (string)
+        (include_statement
+          (identifier))
+        (exclude_statement
+          (identifier))
+        (autolayout_statement
+          (autolayout_value))
+        (description_statement
+          (string))))))

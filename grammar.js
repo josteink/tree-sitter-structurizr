@@ -162,6 +162,7 @@ module.exports = grammar({
 
     views_item_statement: $ => choice(
       $.system_context_view_declaration,
+      $.container_view_declaration,
     ),
 
     system_context_view_declaration: $ => seq(
@@ -178,6 +179,7 @@ module.exports = grammar({
       $.exclude_statement,
       $.autolayout_statement,
       $.default_statement,
+      $.description_statement,
     ),
 
     include_statement: $ => seq(
@@ -216,6 +218,22 @@ module.exports = grammar({
       keyword("default"),
       $._newline,
     ),
+
+    description_statement: $ => seq(
+      keyword("description"),
+      $.string,
+      $._newline,
+    ),
+
+    container_view_declaration: $ => seq(
+      keyword("container"),
+      field("context", $.identifier),
+      field("description", $.string),
+      "{",
+      repeat($.view_property_statement),
+      "}",
+    ),
+
 
     // TODO: container
     // TODO: styles
