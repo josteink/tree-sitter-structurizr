@@ -24,6 +24,16 @@
     ]
   },
   {
+    "type": "style_item_statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "element_declaration",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "view_property_statement",
     "named": true,
     "subtypes": [
@@ -55,6 +65,10 @@
     "subtypes": [
       {
         "type": "container_view_declaration",
+        "named": true
+      },
+      {
+        "type": "styles_declaration",
         "named": true
       },
       {
@@ -270,6 +284,66 @@
     }
   },
   {
+    "type": "element_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "element_property",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "element_property",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "exclude_statement",
     "named": true,
     "fields": {},
@@ -421,6 +495,21 @@
     "type": "string",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "styles_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "style_item_statement",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "system_context_view_declaration",
