@@ -32,6 +32,7 @@ module.exports = grammar({
     $.relation_identifier,
     $.configuration_item_statement,
     $.views_item_statement,
+    $.view_property_statement,
   ],
 
   rules: {
@@ -47,6 +48,7 @@ module.exports = grammar({
       "}",
     ),
 
+    number: _ => token(/[0-9]+/),
     string: $ => seq("\"", $._string_content, "\""),
     _string_content: _ => token(prec(-1, /[^"$\\]+/)),
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
@@ -62,6 +64,7 @@ module.exports = grammar({
     ),
     _assignment_operator: _ => "=",
     _relation_operator: _ => "->",
+    _newline: _ => /\n/,
 
     workspace_item_statement: $ => choice(
       $.model_declaration,
@@ -159,7 +162,6 @@ module.exports = grammar({
 
     views_item_statement: $ => choice(
       $.system_context_view_declaration,
-      // TODO: what about naming for container... will crash!
     ),
 
     system_context_view_declaration: $ => seq(
@@ -172,10 +174,49 @@ module.exports = grammar({
     ),
 
     view_property_statement: $ => choice(
-
+      $.include_statement,
+      $.exclude_statement,
+      $.autolayout_statement,
+      $.default_statement,
     ),
 
-    // TODO: systemContext
+    include_statement: $ => seq(
+      keyword("include"),
+      repeat1(choice(
+        "*",
+        $.identifier,
+      )),
+      $._newline,
+    ),
+
+    exclude_statement: $ => seq(
+      keyword("exclude"),
+      repeat1($.identifier),
+      $._newline,
+    ),
+
+    autolayout_statement: $ => seq(
+      keyword("autolayout"),
+      field("value", $.autolayout_value),
+      optional(seq(
+        field("rankSeparation", $.number),
+        optional(field("nodeSeparation", $.number)),
+      )),
+      $._newline,
+    ),
+
+    autolayout_value: _ => choice(
+      keyword("lr"),
+      keyword("rl"),
+      keyword("tb"),
+      keyword("bt"),
+    ),
+
+    default_statement: $ => seq(
+      keyword("default"),
+      $._newline,
+    ),
+
     // TODO: container
     // TODO: styles
   }

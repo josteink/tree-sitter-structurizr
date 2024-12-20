@@ -371,3 +371,34 @@ workspace "gnu" "bar" {
       (system_context_view_declaration
         (identifier)
         (string)))))
+
+===
+Workspace with views, system-context & properties
+===
+
+workspace "gnu" "bar" {
+  views {
+    systemContext so "test" {
+      include * gnu
+      exclude bar
+      autolayout lr
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (system_context_view_declaration
+        (identifier)
+        (string)
+        (include_statement
+          (identifier))
+        (exclude_statement
+          (identifier))
+        (autolayout_statement
+          (autolayout_value))))))
