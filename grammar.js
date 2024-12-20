@@ -33,6 +33,7 @@ module.exports = grammar({
     $.configuration_item_statement,
     $.views_item_statement,
     $.view_property_statement,
+    $.style_item_statement,
   ],
 
   rules: {
@@ -163,6 +164,7 @@ module.exports = grammar({
     views_item_statement: $ => choice(
       $.system_context_view_declaration,
       $.container_view_declaration,
+      $.styles_declaration,
     ),
 
     system_context_view_declaration: $ => seq(
@@ -234,8 +236,37 @@ module.exports = grammar({
       "}",
     ),
 
+    // https://docs.structurizr.com/dsl/language#styles
+    styles_declaration: $ => seq(
+      keyword("styles"),
+      "{",
+      repeat($.style_item_statement),
+      "}",
+    ),
 
-    // TODO: container
-    // TODO: styles
+    style_item_statement: $ => choice(
+      $.element_declaration,
+    ),
+
+    element_declaration: $ => seq(
+      keyword("element"),
+      field("name", $.string),
+      "{",
+      repeat($.element_property),
+      "}",
+    ),
+
+    element_property: $ => seq(
+      field("key", $.identifier),
+      field("value", choice(
+        $.identifier,
+        $.string,
+        $.number,
+      )),
+      $._newline,
+    )
+
+    // TODO: dynamic view (flow/sequence diagram)
+    // https://docs.structurizr.com/dsl/cookbook/dynamic-view-parallel/
   }
 });

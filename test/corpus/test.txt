@@ -457,3 +457,39 @@ workspace "gnu" "bar" {
         (description_statement
           (string))))))
 
+
+===
+Workspace with views & styles
+===
+
+workspace "gnu" "bar" {
+  views {
+    styles {
+      element "element" {
+        prop1 "string"
+        prop2 identifier
+        prop3 200
+      }
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (styles_declaration
+        (element_declaration
+          (string)
+          (element_property
+            (identifier)
+            (string))
+          (element_property
+            (identifier)
+            (identifier))
+          (element_property
+            (identifier)
+            (number)))))))
