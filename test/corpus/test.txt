@@ -498,6 +498,7 @@ workspace "gnu" "bar" {
         (identifier)
         (string)
         (include_statement
+          (wildcard_identifier)
           (identifier)
           (dotted_identifier (identifier) (identifier)))
         (exclude_statement
@@ -532,6 +533,7 @@ workspace "gnu" "bar" {
         (identifier)
         (string)
         (include_statement
+          (wildcard_identifier)
           (identifier))
         (exclude_statement
           (identifier))

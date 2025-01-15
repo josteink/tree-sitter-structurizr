@@ -67,6 +67,9 @@ module.exports = grammar({
       field("child", $.identifier),
     ),
     identifier: $ => $._simple_identifier,
+
+    wildcard_identifier: () => "*",
+
     relation_identifier: $ => choice(
       $.identifier,
       $.dotted_identifier
@@ -214,11 +217,9 @@ module.exports = grammar({
     include_statement: $ => seq(
       keyword("include"),
       repeat1(choice(
-        "*",
-        choice(
-          $.identifier,
-          $.dotted_identifier,
-        ),
+        $.identifier,
+        $.dotted_identifier,
+        $.wildcard_identifier,
       )),
       $._newline,
     ),
