@@ -88,7 +88,16 @@ uninstall:
 clean:
 	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
 
-test:
+build:
+	$(TS) generate && $(TS) build
+
+test: build
 	$(TS) test
+
+watch:
+	@echo == Initial state ==
+	@make test || true
+	@echo == Watching ==
+	@fswatch -r -o . | while read; do  make test ; done
 
 .PHONY: all install uninstall clean test
