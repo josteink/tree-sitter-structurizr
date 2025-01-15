@@ -610,18 +610,12 @@ workspace "gnu" "bar" {
       (identifiers_value))))
 
 ===
-Workspace with views, container & properties
+Workspace with views, dynamic-view & wildcards
 ===
 
 workspace "gnu" "bar" {
   views {
     dynamic * "Gnu_Invokes_Gpl" "How it all fits together" {
-      autolayout lr
-      title "boo"
-      description "well hello"
-
-      gnu->gpl "hey"
-      gpl->bar "yo"
     }
   }
 }
@@ -634,13 +628,6 @@ workspace "gnu" "bar" {
     (string)
     (views_declaration
       (dynamic_view_declaration
-        (identifier)
+        (wildcard_identifier)
         (string)
-        (include_statement
-          (identifier))
-        (exclude_statement
-          (identifier))
-        (autolayout_statement
-          (autolayout_value))
-        (description_statement
-          (string))))))
+        (string)))))

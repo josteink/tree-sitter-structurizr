@@ -191,6 +191,7 @@ module.exports = grammar({
     views_item_statement: $ => choice(
       $.system_context_view_declaration,
       $.container_view_declaration,
+      $.dynamic_view_declaration,
       $.styles_declaration,
     ),
 
@@ -264,6 +265,21 @@ module.exports = grammar({
     container_view_declaration: $ => seq(
       keyword("container"),
       field("context", $.identifier),
+      optionalSeq(
+        field("key", $.string),
+        field("description", $.string),
+      ),
+      "{",
+      repeat($.view_property_statement),
+      "}",
+    ),
+
+    dynamic_view_declaration: $ => seq(
+      keyword("dynamic"),
+      field("scope", choice(
+        $.identifier,
+        $.wildcard_identifier,
+      )),
       optionalSeq(
         field("key", $.string),
         field("description", $.string),
