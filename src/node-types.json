@@ -210,7 +210,17 @@
       },
       "description": {
         "multiple": false,
-        "required": true,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
             "type": "string",
@@ -569,7 +579,17 @@
       },
       "description": {
         "multiple": false,
-        "required": true,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "key": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
             "type": "string",

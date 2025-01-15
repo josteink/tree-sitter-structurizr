@@ -24,6 +24,14 @@ function keyword(value) {
   );
 }
 
+function optionalSeq(first, ...rest) {
+  if (rest.length === 0) {
+    return optional(first);
+  } else {
+    return optional(seq(first, optionalSeq(...rest)));
+  }
+}
+
 module.exports = grammar({
   name: "structurizr",
 
@@ -43,7 +51,7 @@ module.exports = grammar({
     workspace_declaration: $ => seq(
       keyword("workspace"),
       $.string,
-      $.string,
+      optional($.string),
       "{",
       repeat($.workspace_item_statement),
       "}",
@@ -186,7 +194,10 @@ module.exports = grammar({
     system_context_view_declaration: $ => seq(
       keyword("systemcontext"),
       field("context", $.identifier),
-      field("description", $.string),
+      optionalSeq(
+        field("key", $.string),
+        field("description", $.string),
+      ),
       "{",
       repeat($.view_property_statement),
       "}",
@@ -252,7 +263,10 @@ module.exports = grammar({
     container_view_declaration: $ => seq(
       keyword("container"),
       field("context", $.identifier),
-      field("description", $.string),
+      optionalSeq(
+        field("key", $.string),
+        field("description", $.string),
+      ),
       "{",
       repeat($.view_property_statement),
       "}",

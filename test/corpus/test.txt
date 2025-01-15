@@ -1,6 +1,19 @@
+===
+Empty Workspace with name
+===
+
+workspace "gnu" {
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)))
+
 
 ===
-Empty Workspace
+Empty Workspace with name w/description
 ===
 
 workspace "gnu" "bar" {
@@ -371,7 +384,7 @@ workspace "gnu" "bar" {
     (views_declaration)))
 
 ===
-Workspace with views and system-context
+Workspace with views and system-context-view
 ===
 
 workspace "gnu" "bar" {
@@ -390,6 +403,74 @@ workspace "gnu" "bar" {
     (views_declaration
       (system_context_view_declaration
         (identifier)
+        (string)))))
+
+===
+Workspace with views and system-context-view w/description
+===
+
+workspace "gnu" "bar" {
+  views {
+    systemContext so "test" "desc" {
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (system_context_view_declaration
+        (identifier)
+        (string)
+        (string)))))
+
+===
+Workspace with views and container-view
+===
+
+workspace "gnu" "bar" {
+  views {
+    container so "test" {
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (container_view_declaration
+        (identifier)
+        (string)))))
+
+===
+Workspace with views and container-view w/description
+===
+
+workspace "gnu" "bar" {
+  views {
+    container so "test" "desc" {
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (container_view_declaration
+        (identifier)
+        (string)
         (string)))))
 
 ===
@@ -525,3 +606,39 @@ workspace "gnu" "bar" {
     (string)
     (identifiers_statement
       (identifiers_value))))
+
+===
+Workspace with views, container & properties
+===
+
+workspace "gnu" "bar" {
+  views {
+    dynamic * "Gnu_Invokes_Gpl" "How it all fits together" {
+      autolayout lr
+      title "boo"
+      description "well hello"
+
+      gnu->gpl "hey"
+      gpl->bar "yo"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (dynamic_view_declaration
+        (identifier)
+        (string)
+        (include_statement
+          (identifier))
+        (exclude_statement
+          (identifier))
+        (autolayout_statement
+          (autolayout_value))
+        (description_statement
+          (string))))))
