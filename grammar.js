@@ -58,8 +58,8 @@ module.exports = grammar({
     ),
 
     number: _ => token(/[0-9]+/),
-    string: $ => seq("\"", $._string_content, "\""),
-    _string_content: _ => token(prec(-1, /[^"$\\]+/)),
+    string: $ => token(seq("\"", /[^"$\\]+/, "\"")),
+
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
     dotted_identifier: $ => seq(
       field("parent", $.identifier),
