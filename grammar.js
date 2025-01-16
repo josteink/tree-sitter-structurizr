@@ -129,6 +129,7 @@ module.exports = grammar({
     _model_item_statement: $ => choice(
       $.variable_declaration,
       $.relation_statement,
+      $.tag_declaration,
       $.tags_declaration,
       $.comment,
     ),
@@ -175,8 +176,14 @@ module.exports = grammar({
       $.string,
     ),
 
+    tag_declaration: $ => seq(
+      "tag",
+      $._assignment_operator,
+      $.string,
+    ),
+
     tags_declaration: $ => seq(
-      "tags", // TODO: make case-insensitive... somehow!
+      "tags",
       $._assignment_operator,
       repeat1($.string),
     ),

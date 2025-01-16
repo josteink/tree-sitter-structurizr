@@ -295,7 +295,42 @@ workspace "gnu" "bar" {
         (string)))))
 
 ===
-Workspace with tagged item
+Workspace with single-tagged item
+===
+
+workspace "gnu" "bar" {
+  model {
+    api = container "asp.net core" {
+      tag = "OAuth"
+    }
+    db = container "sqlite" {
+      tag = "Database"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (tag_declaration
+            (string))))
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (tag_declaration
+            (string)))))))
+
+===
+Workspace with multi-tagged item
 ===
 
 workspace "gnu" "bar" {
