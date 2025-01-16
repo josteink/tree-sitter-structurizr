@@ -653,6 +653,12 @@ workspace "commented" {
   views {
     // another comment
   }
+
+  /*
+  NOT STYLE
+  styles {
+  }
+  */
 }
 
 ---
@@ -667,5 +673,6 @@ workspace "commented" {
     (model_declaration
       (comment))
     (views_declaration
-      (comment))))
-g
+      (comment))
+    (comment)))
+
