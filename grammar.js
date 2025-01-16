@@ -11,17 +11,18 @@
 // structurizr is case-insensitive!
 // https://docs.structurizr.com/dsl/basics#dsl-rules
 function keyword(value) {
-  return new RegExp(
-    value
-      .split("")
-      .map((char) => {
-        if (/[a-zA-Z]/.test(char)) {
-          return `[${char.toLowerCase()}${char.toUpperCase()}]`;
-        }
-        return char;
-      })
-      .join("")
-  );
+  return value;
+  // return new RegExp(
+  //   value
+  //     .split("")
+  //     .map((char) => {
+  //       if (/[a-zA-Z]/.test(char)) {
+  //         return `[${char.toLowerCase()}${char.toUpperCase()}]`;
+  //       }
+  //       return char;
+  //     })
+  //     .join("")
+  // );
 }
 
 function optionalSeq(first, ...rest) {
@@ -46,7 +47,10 @@ module.exports = grammar({
 
   rules: {
 
-    dsl: $ => repeat1($.workspace_declaration),
+    dsl: $ => repeat1(choice(
+      $.workspace_declaration,
+      $.comment,
+    )),
 
     workspace_declaration: $ => seq(
       keyword("workspace"),
@@ -149,7 +153,7 @@ module.exports = grammar({
     ),
 
     software_system_declaration: $ => seq(
-      keyword("softwareSystem"),
+      keyword("softwaresystem"),
       field("description", $.string),
       optional($._model_children),
     ),

@@ -114,7 +114,7 @@ Workspace with model & softwareSystem
 
 workspace "gnu" "bar" {
   model {
-    gnu = softwareSystem "bar"
+    gnu = softwaresystem "bar"
   }
 }
 
@@ -158,7 +158,7 @@ Workspace with model, softwareSystem & container
 
 workspace "gnu" "bar" {
   model {
-    gnu = softwareSystem "bar" {
+    gnu = softwaresystem "bar" {
        foo = container "baz"
     }
   }
@@ -186,7 +186,7 @@ Workspace with model, softwareSystem & containers
 
 workspace "gnu" "bar" {
   model {
-    gnu = softwareSystem "bar" {
+    gnu = softwaresystem "bar" {
        foo = container "baz"
        zoo = container "haz"
     }
@@ -242,11 +242,11 @@ Workspace with complex model
 workspace "gnu" "bar" {
   model {
     bob = person "Bob"
-    ss = softwareSystem "Soft" {
+    ss = softwaresystem "Soft" {
       api = container "api"
       web = container "web"
     }
-    email = softwareSystem "Email"
+    email = softwaresystem "Email"
 
     bob -> ss.web "Uses"
     ss.web -> ss.api "Invokes"
@@ -353,7 +353,7 @@ Workspace with configuration & scope
 
 workspace "gnu" "bar" {
   configuration {
-    scope softwareSystem
+    scope softwaresystem
   }
 }
 
@@ -389,7 +389,7 @@ Workspace with views and system-context-view
 
 workspace "gnu" "bar" {
   views {
-    systemContext so "test" {
+    systemcontext so "test" {
     }
   }
 }
@@ -411,7 +411,7 @@ Workspace with views and system-context-view w/description
 
 workspace "gnu" "bar" {
   views {
-    systemContext so "test" "desc" {
+    systemcontext so "test" "desc" {
     }
   }
 }
@@ -479,7 +479,7 @@ Workspace with views, system-context & properties
 
 workspace "gnu" "bar" {
   views {
-    systemContext so "test" {
+    systemcontext so "test" {
       include * gnu gnu.bar
       exclude bar bar.code
       autolayout lr
@@ -657,6 +657,7 @@ workspace "commented" {
   /*
   NOT STYLE
   styles {
+     "not string"
   }
   */
 }
