@@ -98,6 +98,6 @@ watch:
 	@echo == Initial state ==
 	@make test || true
 	@echo == Watching ==
-	@fswatch -r -o . | while read; do  make test ; done
+	@fswatch -r -o . | while read; do  make test ; echo "Completed at: `date`" ; done
 
 .PHONY: all install uninstall clean test
