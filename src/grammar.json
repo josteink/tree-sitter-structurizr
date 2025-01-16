@@ -5,16 +5,25 @@
     "dsl": {
       "type": "REPEAT1",
       "content": {
-        "type": "SYMBOL",
-        "name": "workspace_declaration"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "workspace_declaration"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "comment"
+          }
+        ]
       }
     },
     "workspace_declaration": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[wW][oO][rR][kK][sS][pP][aA][cC][eE]"
+          "type": "STRING",
+          "value": "workspace"
         },
         {
           "type": "SYMBOL",
@@ -234,8 +243,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "![iI][dD][eE][nN][tT][iI][fF][iI][eE][rR][sS]"
+          "type": "STRING",
+          "value": "!identifiers"
         },
         {
           "type": "FIELD",
@@ -264,8 +273,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[mM][oO][dD][eE][lL]"
+          "type": "STRING",
+          "value": "model"
         },
         {
           "type": "SYMBOL",
@@ -393,8 +402,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[sS][oO][fF][tT][wW][aA][rR][eE][sS][yY][sS][tT][eE][mM]"
+          "type": "STRING",
+          "value": "softwaresystem"
         },
         {
           "type": "FIELD",
@@ -422,8 +431,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+          "type": "STRING",
+          "value": "container"
         },
         {
           "type": "FIELD",
@@ -479,8 +488,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[pP][eE][rR][sS][oO][nN]"
+          "type": "STRING",
+          "value": "person"
         },
         {
           "type": "SYMBOL",
@@ -512,8 +521,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
+          "type": "STRING",
+          "value": "configuration"
         },
         {
           "type": "STRING",
@@ -549,8 +558,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[sS][cC][oO][pP][eE]"
+          "type": "STRING",
+          "value": "scope"
         },
         {
           "type": "FIELD",
@@ -566,8 +575,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[vV][iI][eE][wW][sS]"
+          "type": "STRING",
+          "value": "views"
         },
         {
           "type": "STRING",
@@ -615,8 +624,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[sS][yY][sS][tT][eE][mM][cC][oO][nN][tT][eE][xX][tT]"
+          "type": "STRING",
+          "value": "systemcontext"
         },
         {
           "type": "FIELD",
@@ -713,8 +722,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[iI][nN][cC][lL][uU][dD][eE]"
+          "type": "STRING",
+          "value": "include"
         },
         {
           "type": "REPEAT1",
@@ -758,8 +767,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[eE][xX][cC][lL][uU][dD][eE]"
+          "type": "STRING",
+          "value": "exclude"
         },
         {
           "type": "REPEAT1",
@@ -799,8 +808,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[aA][uU][tT][oO][lL][aA][yY][oO][uU][tT]"
+          "type": "STRING",
+          "value": "autolayout"
         },
         {
           "type": "FIELD",
@@ -869,20 +878,20 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[lL][rR]"
+          "type": "STRING",
+          "value": "lr"
         },
         {
-          "type": "PATTERN",
-          "value": "[rR][lL]"
+          "type": "STRING",
+          "value": "rl"
         },
         {
-          "type": "PATTERN",
-          "value": "[tT][bB]"
+          "type": "STRING",
+          "value": "tb"
         },
         {
-          "type": "PATTERN",
-          "value": "[bB][tT]"
+          "type": "STRING",
+          "value": "bt"
         }
       ]
     },
@@ -890,8 +899,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[dD][eE][fF][aA][uU][lL][tT]"
+          "type": "STRING",
+          "value": "default"
         },
         {
           "type": "CHOICE",
@@ -915,8 +924,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
+          "type": "STRING",
+          "value": "description"
         },
         {
           "type": "SYMBOL",
@@ -944,8 +953,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+          "type": "STRING",
+          "value": "container"
         },
         {
           "type": "FIELD",
@@ -1013,8 +1022,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[dD][yY][nN][aA][mM][iI][cC]"
+          "type": "STRING",
+          "value": "dynamic"
         },
         {
           "type": "FIELD",
@@ -1091,8 +1100,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[sS][tT][yY][lL][eE][sS]"
+          "type": "STRING",
+          "value": "styles"
         },
         {
           "type": "STRING",
@@ -1128,8 +1137,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[eE][lL][eE][mM][eE][nN][tT]"
+          "type": "STRING",
+          "value": "element"
         },
         {
           "type": "FIELD",
