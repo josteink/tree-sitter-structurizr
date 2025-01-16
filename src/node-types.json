@@ -222,6 +222,10 @@
           "named": true
         },
         {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
           "type": "tags_declaration",
           "named": true
         },
@@ -579,6 +583,10 @@
           "named": true
         },
         {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
           "type": "tags_declaration",
           "named": true
         },
@@ -673,6 +681,10 @@
           "named": true
         },
         {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
           "type": "tags_declaration",
           "named": true
         },
@@ -739,6 +751,21 @@
       "types": [
         {
           "type": "view_property_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -933,6 +960,10 @@
   },
   {
     "type": "systemcontext",
+    "named": false
+  },
+  {
+    "type": "tag",
     "named": false
   },
   {

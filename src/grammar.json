@@ -315,6 +315,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "tag_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "tags_declaration"
         },
         {
@@ -490,6 +494,23 @@
         {
           "type": "STRING",
           "value": "person"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "tag_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_assignment_operator"
         },
         {
           "type": "SYMBOL",
