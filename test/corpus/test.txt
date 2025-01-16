@@ -645,6 +645,14 @@ workspace "commented" {
   /*
      multi line comment
    */
+
+  model {
+    # model comment
+  }
+
+  views {
+    // another comment
+  }
 }
 
 ---
@@ -655,4 +663,9 @@ workspace "commented" {
     (comment)
     (comment)
     (comment)
-    (comment)))
+    (comment)
+    (model_declaration
+      (comment))
+    (views_declaration
+      (comment))))
+g
