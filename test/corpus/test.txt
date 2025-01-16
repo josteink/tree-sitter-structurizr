@@ -631,3 +631,28 @@ workspace "gnu" "bar" {
         (wildcard_identifier)
         (string)
         (string)))))
+
+===
+Workspace with comments
+===
+
+workspace "commented" {
+  #  single line comment 1
+  // single line comment 2
+
+  /* single line comment 3 */
+
+  /*
+     multi line comment
+   */
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (comment)
+    (comment)
+    (comment)
+    (comment)))

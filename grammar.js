@@ -82,11 +82,22 @@ module.exports = grammar({
       /#[0-9a-zA-Z]{6}/,
     ),
 
+    comment: _ => token(choice(
+      seq("#", /(\\(.|\r?\n)|[^\\\n])*/),
+      seq("//", /(\\(.|\r?\n)|[^\\\n])*/),
+      seq(
+        "/*",
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        "/",
+      ),
+    )),
+
     workspace_item_statement: $ => choice(
       $.identifiers_statement,
       $.model_declaration,
       $.configuration_declaration,
       $.views_declaration,
+      $.comment,
     ),
 
     // https://docs.structurizr.com/dsl/language#identifiers
@@ -115,6 +126,7 @@ module.exports = grammar({
       $.variable_declaration,
       $.relation_statement,
       $.tags_declaration,
+      $.comment,
     ),
 
     variable_declaration: $ => seq(
@@ -174,6 +186,7 @@ module.exports = grammar({
 
     configuration_item_statement: $ => choice(
       $.scope_declaration,
+      $.comment,
     ),
 
     scope_declaration: $ => seq(
@@ -193,6 +206,7 @@ module.exports = grammar({
       $.container_view_declaration,
       $.dynamic_view_declaration,
       $.styles_declaration,
+      $.comment,
     ),
 
     system_context_view_declaration: $ => seq(
@@ -213,6 +227,7 @@ module.exports = grammar({
       $.autolayout_statement,
       $.default_statement,
       $.description_statement,
+      $.comment,
     ),
 
     include_statement: $ => seq(
@@ -222,6 +237,7 @@ module.exports = grammar({
         $.dotted_identifier,
         $.wildcard_identifier,
       )),
+      optional($.comment),
       $._newline,
     ),
 
@@ -231,6 +247,7 @@ module.exports = grammar({
         $.identifier,
         $.dotted_identifier,
       )),
+      optional($.comment),
       $._newline,
     ),
 
@@ -241,6 +258,7 @@ module.exports = grammar({
         field("rankSeparation", $.number),
         optional(field("nodeSeparation", $.number)),
       )),
+      optional($.comment),
       $._newline,
     ),
 
@@ -253,12 +271,14 @@ module.exports = grammar({
 
     default_statement: $ => seq(
       keyword("default"),
+      optional($.comment),
       $._newline,
     ),
 
     description_statement: $ => seq(
       keyword("description"),
       $.string,
+      optional($.comment),
       $._newline,
     ),
 
@@ -299,13 +319,17 @@ module.exports = grammar({
 
     style_item_statement: $ => choice(
       $.element_declaration,
+      $.comment,
     ),
 
     element_declaration: $ => seq(
       keyword("element"),
       field("name", $.string),
       "{",
-      repeat($.element_property),
+      repeat(choice(
+        $.element_property,
+        $.comment,
+      )),
       "}",
     ),
 
@@ -317,10 +341,8 @@ module.exports = grammar({
         $.number,
         $.color,
       )),
+      optional($.comment),
       $._newline,
     )
-
-    // TODO: dynamic view (flow/sequence diagram)
-    // https://docs.structurizr.com/dsl/cookbook/dynamic-view-parallel/
   }
 });
