@@ -712,3 +712,40 @@ workspace "commented" {
       (comment))
     (comment)))
 
+
+===
+Workspace with nested entities
+===
+
+workspace "nested" {
+  model {
+    ss = softwaresystem "top-level" {
+     cnt = container "second-level" {
+       cmp = component "third-level" {
+         tag = "docker"
+       }
+     }
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string)
+          (variable_declaration
+            (identifier)
+            (container_declaration
+              (string)
+              (variable_declaration
+                (identifier)
+                (component_declaration
+                  (string)
+                  (tag_declaration
+                    (string)))))))))))

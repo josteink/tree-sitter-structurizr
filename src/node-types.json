@@ -180,6 +180,68 @@
     "fields": {}
   },
   {
+    "type": "component_declaration",
+    "named": true,
+    "fields": {
+      "description": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "tags": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "relation_statement",
+          "named": true
+        },
+        {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
+          "type": "tags_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "configuration_declaration",
     "named": true,
     "fields": {},
@@ -892,6 +954,10 @@
         "required": true,
         "types": [
           {
+            "type": "component_declaration",
+            "named": true
+          },
+          {
             "type": "container_declaration",
             "named": true
           },
@@ -968,6 +1034,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "component",
+    "named": false
   },
   {
     "type": "configuration",

@@ -390,6 +390,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "person_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "software_system_declaration"
         },
         {
@@ -398,7 +402,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "person_declaration"
+          "name": "component_declaration"
         }
       ]
     },
@@ -477,6 +481,75 @@
         {
           "type": "STRING",
           "value": "container"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "description",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "FIELD",
+                      "name": "tags",
+                      "content": {
+                        "type": "REPEAT",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_model_children"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "component_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "component"
         },
         {
           "type": "FIELD",

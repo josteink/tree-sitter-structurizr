@@ -150,9 +150,10 @@ module.exports = grammar({
     ),
 
     _item_declaration: $ => choice(
+      $.person_declaration,
       $.software_system_declaration,
       $.container_declaration,
-      $.person_declaration,
+      $.component_declaration,
     ),
 
     software_system_declaration: $ => seq(
@@ -167,6 +168,16 @@ module.exports = grammar({
 
     container_declaration: $ => seq(
       keyword("container"),
+      field("name", $.string),
+      optionalSeq(
+        field("description", $.string),
+        field("tags", repeat($.string)),
+      ),
+      optional($._model_children),
+    ),
+
+    component_declaration: $ => seq(
+      keyword("component"),
       field("name", $.string),
       optionalSeq(
         field("description", $.string),
@@ -343,6 +354,8 @@ module.exports = grammar({
       "}",
     ),
 
+    // language reference and known elements:
+    // https://docs.structurizr.com/dsl/language#element-style
     style_item_statement: $ => choice(
       $.element_declaration,
       $.comment,
