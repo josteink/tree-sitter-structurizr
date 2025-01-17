@@ -45,6 +45,8 @@ module.exports = grammar({
     $.style_item_statement,
   ],
 
+  // language reference here:
+  // https://docs.structurizr.com/dsl/language#language-reference
   rules: {
 
     dsl: $ => repeat1(choice(
@@ -155,13 +157,21 @@ module.exports = grammar({
 
     software_system_declaration: $ => seq(
       keyword("softwaresystem"),
-      field("description", $.string),
+      field("name", $.string),
+      optionalSeq(
+        field("description", $.string),
+        field("tags", repeat($.string)),
+      ),
       optional($._model_children),
     ),
 
     container_declaration: $ => seq(
       keyword("container"),
-      field("description", $.string),
+      field("name", $.string),
+      optionalSeq(
+        field("description", $.string),
+        field("tags", repeat($.string)),
+      ),
       optional($._model_children),
     ),
 
@@ -173,7 +183,12 @@ module.exports = grammar({
 
     person_declaration: $ => seq(
       keyword("person"),
-      $.string,
+      field("name", $.string),
+      optionalSeq(
+        field("description", $.string),
+        field("tags", repeat($.string)),
+      ),
+      optional($._model_children),
     ),
 
     tag_declaration: $ => seq(
