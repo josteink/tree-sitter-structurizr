@@ -200,7 +200,27 @@
     "fields": {
       "description": {
         "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "tags": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
             "type": "string",
@@ -600,13 +620,60 @@
   {
     "type": "person_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "description": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "tags": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
         {
-          "type": "string",
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "relation_statement",
+          "named": true
+        },
+        {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
+          "type": "tags_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
           "named": true
         }
       ]
@@ -659,7 +726,27 @@
     "fields": {
       "description": {
         "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
+      "tags": {
+        "multiple": true,
+        "required": false,
         "types": [
           {
             "type": "string",
