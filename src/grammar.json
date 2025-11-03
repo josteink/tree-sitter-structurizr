@@ -735,10 +735,6 @@
           "value": "tags"
         },
         {
-          "type": "SYMBOL",
-          "name": "_assignment_operator"
-        },
-        {
           "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",

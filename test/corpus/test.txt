@@ -358,10 +358,10 @@ Workspace with multi-tagged item
 workspace "gnu" "bar" {
   model {
     api = container "asp.net core" {
-      tags = "OAuth" "NET8"
+      tags "OAuth" "NET8"
     }
     db = container "sqlite" {
-      tags = "Database"
+      tags "Database"
     }
   }
 }

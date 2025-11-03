@@ -209,7 +209,6 @@ module.exports = grammar({
 
     tags_declaration: $ => seq(
       "tags",
-      $._assignment_operator,
       repeat1($.string),
     ),
 
