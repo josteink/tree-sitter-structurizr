@@ -11,18 +11,17 @@
 // structurizr is case-insensitive!
 // https://docs.structurizr.com/dsl/basics#dsl-rules
 function keyword(value) {
-  return value;
-  // return new RegExp(
-  //   value
-  //     .split("")
-  //     .map((char) => {
-  //       if (/[a-zA-Z]/.test(char)) {
-  //         return `[${char.toLowerCase()}${char.toUpperCase()}]`;
-  //       }
-  //       return char;
-  //     })
-  //     .join("")
-  // );
+  return new RegExp(
+    value
+      .split("")
+      .map((char) => {
+        if (/[a-zA-Z]/.test(char)) {
+          return `[${char.toLowerCase()}${char.toUpperCase()}]`;
+        }
+        return char;
+      })
+      .join("")
+  );
 }
 
 function optionalSeq(first, ...rest) {

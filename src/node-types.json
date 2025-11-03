@@ -1008,10 +1008,6 @@
     }
   },
   {
-    "type": "!identifiers",
-    "named": false
-  },
-  {
     "type": "->",
     "named": false
   },
@@ -1024,48 +1020,8 @@
     "named": false
   },
   {
-    "type": "autolayout",
-    "named": false
-  },
-  {
-    "type": "bt",
-    "named": false
-  },
-  {
     "type": "comment",
     "named": true
-  },
-  {
-    "type": "component",
-    "named": false
-  },
-  {
-    "type": "configuration",
-    "named": false
-  },
-  {
-    "type": "container",
-    "named": false
-  },
-  {
-    "type": "default",
-    "named": false
-  },
-  {
-    "type": "description",
-    "named": false
-  },
-  {
-    "type": "dynamic",
-    "named": false
-  },
-  {
-    "type": "element",
-    "named": false
-  },
-  {
-    "type": "exclude",
-    "named": false
   },
   {
     "type": "flat",
@@ -1076,48 +1032,12 @@
     "named": false
   },
   {
-    "type": "include",
-    "named": false
-  },
-  {
-    "type": "lr",
-    "named": false
-  },
-  {
-    "type": "model",
-    "named": false
-  },
-  {
     "type": "number",
     "named": true
   },
   {
-    "type": "person",
-    "named": false
-  },
-  {
-    "type": "rl",
-    "named": false
-  },
-  {
-    "type": "scope",
-    "named": false
-  },
-  {
-    "type": "softwaresystem",
-    "named": false
-  },
-  {
     "type": "string",
     "named": true
-  },
-  {
-    "type": "styles",
-    "named": false
-  },
-  {
-    "type": "systemcontext",
-    "named": false
   },
   {
     "type": "tag",
@@ -1128,20 +1048,8 @@
     "named": false
   },
   {
-    "type": "tb",
-    "named": false
-  },
-  {
-    "type": "views",
-    "named": false
-  },
-  {
     "type": "wildcard_identifier",
     "named": true
-  },
-  {
-    "type": "workspace",
-    "named": false
   },
   {
     "type": "{",

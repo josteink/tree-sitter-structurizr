@@ -109,12 +109,34 @@ workspace "gnu" "bar" {
         (string)))))
 
 ===
-Workspace with model & softwareSystem
+Workspace with model & softwaresystem
 ===
 
 workspace "gnu" "bar" {
   model {
     gnu = softwaresystem "bar"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string))))))
+
+===
+Workspace with model & softwareSystem
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu = softwareSystem "bar"
   }
 }
 

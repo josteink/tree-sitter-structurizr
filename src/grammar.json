@@ -22,8 +22,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "workspace"
+          "type": "PATTERN",
+          "value": "[wW][oO][rR][kK][sS][pP][aA][cC][eE]"
         },
         {
           "type": "SYMBOL",
@@ -243,8 +243,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "!identifiers"
+          "type": "PATTERN",
+          "value": "![iI][dD][eE][nN][tT][iI][fF][iI][eE][rR][sS]"
         },
         {
           "type": "FIELD",
@@ -273,8 +273,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "model"
+          "type": "PATTERN",
+          "value": "[mM][oO][dD][eE][lL]"
         },
         {
           "type": "SYMBOL",
@@ -410,8 +410,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "softwaresystem"
+          "type": "PATTERN",
+          "value": "[sS][oO][fF][tT][wW][aA][rR][eE][sS][yY][sS][tT][eE][mM]"
         },
         {
           "type": "FIELD",
@@ -479,8 +479,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "container"
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
         },
         {
           "type": "FIELD",
@@ -548,8 +548,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "component"
+          "type": "PATTERN",
+          "value": "[cC][oO][mM][pP][oO][nN][eE][nN][tT]"
         },
         {
           "type": "FIELD",
@@ -645,8 +645,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "person"
+          "type": "PATTERN",
+          "value": "[pP][eE][rR][sS][oO][nN]"
         },
         {
           "type": "FIELD",
@@ -751,8 +751,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "configuration"
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
         },
         {
           "type": "STRING",
@@ -788,8 +788,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "scope"
+          "type": "PATTERN",
+          "value": "[sS][cC][oO][pP][eE]"
         },
         {
           "type": "FIELD",
@@ -805,8 +805,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "views"
+          "type": "PATTERN",
+          "value": "[vV][iI][eE][wW][sS]"
         },
         {
           "type": "STRING",
@@ -854,8 +854,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "systemcontext"
+          "type": "PATTERN",
+          "value": "[sS][yY][sS][tT][eE][mM][cC][oO][nN][tT][eE][xX][tT]"
         },
         {
           "type": "FIELD",
@@ -952,8 +952,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "include"
+          "type": "PATTERN",
+          "value": "[iI][nN][cC][lL][uU][dD][eE]"
         },
         {
           "type": "REPEAT1",
@@ -997,8 +997,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "exclude"
+          "type": "PATTERN",
+          "value": "[eE][xX][cC][lL][uU][dD][eE]"
         },
         {
           "type": "REPEAT1",
@@ -1038,8 +1038,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "autolayout"
+          "type": "PATTERN",
+          "value": "[aA][uU][tT][oO][lL][aA][yY][oO][uU][tT]"
         },
         {
           "type": "FIELD",
@@ -1108,20 +1108,20 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "lr"
+          "type": "PATTERN",
+          "value": "[lL][rR]"
         },
         {
-          "type": "STRING",
-          "value": "rl"
+          "type": "PATTERN",
+          "value": "[rR][lL]"
         },
         {
-          "type": "STRING",
-          "value": "tb"
+          "type": "PATTERN",
+          "value": "[tT][bB]"
         },
         {
-          "type": "STRING",
-          "value": "bt"
+          "type": "PATTERN",
+          "value": "[bB][tT]"
         }
       ]
     },
@@ -1129,8 +1129,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "default"
+          "type": "PATTERN",
+          "value": "[dD][eE][fF][aA][uU][lL][tT]"
         },
         {
           "type": "CHOICE",
@@ -1154,8 +1154,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "description"
+          "type": "PATTERN",
+          "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
         },
         {
           "type": "SYMBOL",
@@ -1183,8 +1183,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "container"
+          "type": "PATTERN",
+          "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
         },
         {
           "type": "FIELD",
@@ -1252,8 +1252,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "dynamic"
+          "type": "PATTERN",
+          "value": "[dD][yY][nN][aA][mM][iI][cC]"
         },
         {
           "type": "FIELD",
@@ -1330,8 +1330,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "styles"
+          "type": "PATTERN",
+          "value": "[sS][tT][yY][lL][eE][sS]"
         },
         {
           "type": "STRING",
@@ -1367,8 +1367,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "element"
+          "type": "PATTERN",
+          "value": "[eE][lL][eE][mM][eE][nN][tT]"
         },
         {
           "type": "FIELD",
@@ -1476,5 +1476,6 @@
     "views_item_statement",
     "view_property_statement",
     "style_item_statement"
-  ]
+  ],
+  "reserved": {}
 }
