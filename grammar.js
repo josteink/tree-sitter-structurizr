@@ -146,6 +146,10 @@ module.exports = grammar({
       $._relation_operator,
       field("target", $.relation_identifier),
       field("relation", $.string),
+      optionalSeq(
+        field("technology", $.string),
+        field("tags", $.string)
+      )
     ),
 
     _item_declaration: $ => choice(

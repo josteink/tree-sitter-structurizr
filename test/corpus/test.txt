@@ -87,6 +87,53 @@ workspace "gnu" "bar" {
         (string)))))
 
 ===
+Workspace with model & relation & technology
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu -> bar "test" "tech"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (relation_statement
+        (identifier)
+        (identifier)
+        (string)
+        (string)))))
+
+===
+Workspace with model & relation & technology & tags
+===
+
+workspace "gnu" "bar" {
+  model {
+    gnu -> bar "test" "tech" "tag"
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (relation_statement
+        (identifier)
+        (identifier)
+        (string)
+        (string)
+        (string)))))
+
+===
 Workspace with model & inner relation
 ===
 

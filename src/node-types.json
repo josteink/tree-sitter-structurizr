@@ -769,12 +769,32 @@
           }
         ]
       },
+      "tags": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      },
       "target": {
         "multiple": false,
         "required": true,
         "types": [
           {
             "type": "relation_identifier",
+            "named": true
+          }
+        ]
+      },
+      "technology": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string",
             "named": true
           }
         ]
