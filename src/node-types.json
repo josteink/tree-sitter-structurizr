@@ -38,6 +38,10 @@
       {
         "type": "element_declaration",
         "named": true
+      },
+      {
+        "type": "relationship_declaration",
+        "named": true
       }
     ]
   },
@@ -775,6 +779,36 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "relationship_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "element_property",
+          "named": true
+        }
+      ]
     }
   },
   {

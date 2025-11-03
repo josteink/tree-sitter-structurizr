@@ -357,11 +357,23 @@ module.exports = grammar({
     // https://docs.structurizr.com/dsl/language#element-style
     style_item_statement: $ => choice(
       $.element_declaration,
+      $.relationship_declaration,
       $.comment,
     ),
 
     element_declaration: $ => seq(
       keyword("element"),
+      field("name", $.string),
+      "{",
+      repeat(choice(
+        $.element_property,
+        $.comment,
+      )),
+      "}",
+    ),
+
+    relationship_declaration: $ => seq(
+      keyword("relationship"),
       field("name", $.string),
       "{",
       repeat(choice(

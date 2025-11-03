@@ -641,6 +641,55 @@ workspace "gnu" "bar" {
             (color)))))))
 
 ===
+Workspace with views & styles & relationships
+===
+
+workspace "gnu" "bar" {
+  views {
+    styles {
+      element "element" {
+        prop1 "string"
+        prop2 identifier
+        prop3 200
+        color #ffffff
+      }
+
+      relationship "relationship" {
+        thickness 4
+      }
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (styles_declaration
+        (element_declaration
+          (string)
+          (element_property
+            (identifier)
+            (string))
+          (element_property
+            (identifier)
+            (identifier))
+          (element_property
+            (identifier)
+            (number))
+          (element_property
+            (identifier)
+            (color)))
+        (relationship_declaration
+          (string)
+          (element_property
+            (identifier)
+            (number)))))))
+
+===
 Workspace with identifiers statement
 ===
 

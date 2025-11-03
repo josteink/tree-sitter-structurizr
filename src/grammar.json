@@ -1359,6 +1359,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "relationship_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "comment"
         }
       ]
@@ -1369,6 +1373,47 @@
         {
           "type": "PATTERN",
           "value": "[eE][lL][eE][mM][eE][nN][tT]"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "element_property"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "relationship_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[rR][eE][lL][aA][tT][iI][oO][nN][sS][hH][iI][pP]"
         },
         {
           "type": "FIELD",
