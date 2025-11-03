@@ -11,7 +11,7 @@
 // structurizr is case-insensitive!
 // https://docs.structurizr.com/dsl/basics#dsl-rules
 function keyword(value) {
-  return new RegExp(
+  const rx = new RegExp(
     value
       .split("")
       .map((char) => {
@@ -22,6 +22,7 @@ function keyword(value) {
       })
       .join("")
   );
+  return alias(rx, value);
 }
 
 function optionalSeq(first, ...rest) {
