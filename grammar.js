@@ -87,8 +87,6 @@ module.exports = grammar({
       $.identifier,
       $.dotted_identifier
     ),
-    _assignment_operator: _ => "=",
-    _relation_operator: _ => "->",
     _newline: _ => /\n/,
     color: _ => choice(
       /#[0-9a-zA-Z]{3}/,
@@ -163,13 +161,12 @@ module.exports = grammar({
 
     variable_declaration: $ => seq(
       field("name", $.identifier),
-      $._assignment_operator,
+      "=",
       field("value", $._item_declaration),
     ),
-
     relation_statement: $ => seq(
       field("source", $.relation_identifier),
-      $._relation_operator,
+      "->",
       field("target", $.relation_identifier),
       field("relation", $.string),
       optionalSeq(
@@ -233,7 +230,7 @@ module.exports = grammar({
 
     tag_declaration: $ => seq(
       "tag",
-      $._assignment_operator,
+      "=",
       $.string,
     ),
 
