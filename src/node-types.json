@@ -106,11 +106,19 @@
     "named": true,
     "subtypes": [
       {
+        "type": "adrs_statement",
+        "named": true
+      },
+      {
         "type": "comment",
         "named": true
       },
       {
         "type": "configuration_declaration",
+        "named": true
+      },
+      {
+        "type": "docs_statement",
         "named": true
       },
       {
@@ -126,6 +134,32 @@
         "named": true
       }
     ]
+  },
+  {
+    "type": "adrs_statement",
+    "named": true,
+    "fields": {
+      "classname": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "class_value",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "path_value",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "autolayout_statement",
@@ -223,7 +257,15 @@
       "required": false,
       "types": [
         {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
           "named": true
         },
         {
@@ -300,7 +342,15 @@
       "required": false,
       "types": [
         {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
           "named": true
         },
         {
@@ -403,6 +453,32 @@
     }
   },
   {
+    "type": "docs_statement",
+    "named": true,
+    "fields": {
+      "classname": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "class_value",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "path_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "dotted_identifier",
     "named": true,
     "fields": {
@@ -431,7 +507,6 @@
   {
     "type": "dsl",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -661,7 +736,15 @@
       "required": false,
       "types": [
         {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
           "named": true
         },
         {
@@ -723,7 +806,15 @@
       "required": false,
       "types": [
         {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
           "named": true
         },
         {
@@ -876,7 +967,15 @@
       "required": false,
       "types": [
         {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
           "named": true
         },
         {
@@ -1062,19 +1161,19 @@
     }
   },
   {
+    "type": "!adrs",
+    "named": false
+  },
+  {
+    "type": "!docs",
+    "named": false
+  },
+  {
     "type": "!identifiers",
     "named": false
   },
   {
-    "type": "->",
-    "named": false
-  },
-  {
     "type": ".",
-    "named": false
-  },
-  {
-    "type": "=",
     "named": false
   },
   {
@@ -1084,6 +1183,10 @@
   {
     "type": "bt",
     "named": false
+  },
+  {
+    "type": "class_value",
+    "named": true
   },
   {
     "type": "comment",
@@ -1143,6 +1246,10 @@
   },
   {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "path_value",
     "named": true
   },
   {

@@ -52,6 +52,13 @@
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
     "test-parse": "tree-sitter generate && tree-sitter build && tree-sitter test",
-    "watch": "nodemon -w . -w test/corpus -e js,txt -x 'npm run test-parse'"
-  }
+    "watch": "nodemon -w . -w test/corpus -e js,txt -x 'npm run test-parse'",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.structurizr",
+      "injection-regex": "^structurizr$"
+    }
+  ]
 }

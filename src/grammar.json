@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "structurizr",
   "rules": {
     "dsl": {
@@ -86,6 +85,42 @@
           {
             "type": "STRING",
             "value": "\""
+          }
+        ]
+      }
+    },
+    "class_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)*"
+      }
+    },
+    "path_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^(\\s\\n\\\")]+"
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "\""
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^\"$\\\\]+"
+              },
+              {
+                "type": "STRING",
+                "value": "\""
+              }
+            ]
           }
         ]
       }
@@ -228,6 +263,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "docs_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "adrs_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "model_declaration"
         },
         {
@@ -276,6 +319,82 @@
         {
           "type": "STRING",
           "value": "flat"
+        }
+      ]
+    },
+    "docs_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "![dD][oO][cC][sS]"
+          },
+          "named": false,
+          "value": "!docs"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "path_value"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "classname",
+              "content": {
+                "type": "SYMBOL",
+                "name": "class_value"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "adrs_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "![aA][dD][rR][sS]"
+          },
+          "named": false,
+          "value": "!adrs"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "path_value"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "classname",
+              "content": {
+                "type": "SYMBOL",
+                "name": "class_value"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -339,6 +458,14 @@
         {
           "type": "SYMBOL",
           "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "docs_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "adrs_statement"
         }
       ]
     },
@@ -1679,6 +1806,5 @@
     "views_item_statement",
     "view_property_statement",
     "style_item_statement"
-  ],
-  "reserved": {}
+  ]
 }

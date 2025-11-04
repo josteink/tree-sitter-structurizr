@@ -64,7 +64,14 @@ module.exports = grammar({
     ),
 
     number: _ => token(/[0-9]+/),
-    string: $ => token(seq("\"", /[^"$\\]+/, "\"")),
+    string: _ => token(seq("\"", /[^"$\\]+/, "\"")),
+    class_value: _ => token(
+      /[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*/
+    ),
+    path_value: _g => token(choice(
+      /[^(\s\n\")]+/, // simple_identifier
+      seq("\"", /[^"$\\]+/, "\""), // string
+    )),
 
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
     dotted_identifier: $ => seq(
@@ -100,6 +107,8 @@ module.exports = grammar({
 
     workspace_item_statement: $ => choice(
       $.identifiers_statement,
+      $.docs_statement,
+      $.adrs_statement,
       $.model_declaration,
       $.configuration_declaration,
       $.views_declaration,
@@ -115,6 +124,20 @@ module.exports = grammar({
     identifiers_value: _ => choice(
       "hierarchical",
       "flat",
+    ),
+
+    // https://docs.structurizr.com/dsl/language#docs
+    docs_statement: $ => seq(
+      keyword("!docs"),
+      field("value", $.path_value),
+      optional(field("classname", $.class_value)),
+    ),
+
+    // https://docs.structurizr.com/dsl/language#adrs
+    adrs_statement: $ => seq(
+      keyword("!adrs"),
+      field("value", $.path_value),
+      optional(field("classname", $.class_value)),
     ),
 
     model_declaration: $ => seq(
@@ -134,6 +157,8 @@ module.exports = grammar({
       $.tag_declaration,
       $.tags_declaration,
       $.comment,
+      $.docs_statement,
+      $.adrs_statement,
     ),
 
     variable_declaration: $ => seq(

@@ -763,6 +763,122 @@ workspace "gnu" "bar" {
       (identifiers_value))))
 
 ===
+Workspace with docs statement
+===
+
+workspace "gnu" "bar" {
+  !docs subdirectory
+}
+
+workspace "gnu" "bar" {
+  !docs subdirectory com.structurizr.importer.documentation.DefaultDocumentationImporter
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (docs_statement
+      (path_value)))
+  (workspace_declaration
+    (string)
+    (string)
+    (docs_statement
+      (path_value)
+      (class_value))))
+
+===
+Workspace with adrs statement
+===
+
+workspace "gnu" "bar" {
+  !adrs sub/directory
+}
+
+workspace "gnu" "bar" {
+  !adrs subdirectory com.structurizr.importer.documentation.AdrToolsDecisionImporter
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (adrs_statement
+      (path_value)))
+  (workspace_declaration
+    (string)
+    (string)
+    (adrs_statement
+      (path_value)
+      (class_value))))
+
+===
+Container with docs & adrs statement
+===
+
+workspace "gnu" "bar" {
+  model {
+    baz = container "baz" {
+      !docs sub/directory com.structurizr.importer.documentation.DefaultDocumentationImporter
+      !adrs sub/directory com.structurizr.importer.documentation.AdrToolsDecisionImporter
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (docs_statement
+            (path_value)
+            (class_value))
+          (adrs_statement
+            (path_value)
+            (class_value)))))))
+
+===
+SoftwareSystem with docs & adrs statement
+===
+
+workspace "gnu" "bar" {
+  model {
+    baz = softwareSystem "baz" {
+      !docs sub/directory com.structurizr.importer.documentation.DefaultDocumentationImporter
+      !adrs sub/directory com.structurizr.importer.documentation.AdrToolsDecisionImporter
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (software_system_declaration
+          (string)
+          (docs_statement
+            (path_value)
+            (class_value))
+          (adrs_statement
+            (path_value)
+            (class_value)))))))
+
+===
 Workspace with views, dynamic-view & wildcards
 ===
 
