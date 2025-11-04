@@ -117,6 +117,7 @@ module.exports = grammar({
     identifiers_statement: $ => seq(
       keyword("!identifiers"),
       field("value", $.identifiers_value),
+      $._newline,
     ),
 
     identifiers_value: _ => choice(
@@ -129,6 +130,7 @@ module.exports = grammar({
       keyword("!docs"),
       field("value", $.path_value),
       optional(field("classname", $.class_value)),
+      $._newline,
     ),
 
     // https://docs.structurizr.com/dsl/language#adrs
@@ -136,6 +138,7 @@ module.exports = grammar({
       keyword("!adrs"),
       field("value", $.path_value),
       optional(field("classname", $.class_value)),
+      $._newline,
     ),
 
     model_declaration: $ => seq(
