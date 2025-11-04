@@ -66,9 +66,9 @@ module.exports = grammar({
     number: _ => token(/[0-9]+/),
     string: _ => token(seq("\"", /[^"$\\]+/, "\"")),
     class_value: _ => token(
-      /[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)*/
+      /[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)+/
     ),
-    path_value: _g => token(choice(
+    path_value: _ => token(choice(
       /[^(\s\n\")]+/, // simple_identifier
       seq("\"", /[^"$\\]+/, "\""), // string
     )),
