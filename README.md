@@ -12,3 +12,23 @@ Adapted from [the official spec](https://docs.structurizr.com/dsl/language)
 Under development. Incomplete. Possibly unstable.
 
 Not recommended for production use, but patches/improvements welcome.
+
+
+## contributing / development
+
+If you want to contribute you will (at least) need:
+
+- `tree-sitter-cli`: This can usually be installed with your system
+  package-manager, or `brew` on MacOS.
+- `GNU make` or other compatible make-version.
+
+With those in place, working with the grammar should be fairly simple:
+
+- add test-case to `test/corpus/test.txt`
+- modify `grammar.js` to change grammar.
+- verify with `make test`.
+- when done, commit all files (`parser.c`, etc).
+
+PRs welcome! Please be kind and make PRs small enough
+(feature-scoped?) to be possible to review and merge without
+significant risk of merge-conflicts.vg
