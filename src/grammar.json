@@ -103,7 +103,7 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[^(\\s\\n\\\")]+"
+            "value": "[^(\\s\\\")]+"
           },
           {
             "type": "SEQ",
@@ -114,7 +114,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[^\"$\\\\]+"
+                "value": "[^\"]+"
               },
               {
                 "type": "STRING",
@@ -1120,6 +1120,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "theme_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "themes_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "comment"
         }
       ]
@@ -1652,6 +1660,70 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "theme_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[tT][hH][eE][mM][eE]"
+          },
+          "named": false,
+          "value": "theme"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "theme_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "themes_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[tT][hH][eE][mM][eE][sS]"
+          },
+          "named": false,
+          "value": "themes"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "theme_value"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "theme_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "default"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "path_value"
         }
       ]
     },

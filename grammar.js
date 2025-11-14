@@ -33,6 +33,10 @@ function optionalSeq(first, ...rest) {
   }
 }
 
+function quoted(expr) {
+  return seq("\"", expr, "\"");
+}
+
 module.exports = grammar({
   name: "structurizr",
 
@@ -64,13 +68,13 @@ module.exports = grammar({
     ),
 
     number: _ => token(/[0-9]+/),
-    string: _ => token(seq("\"", /[^"$\\]+/, "\"")),
+    string: _ => token(quoted(/[^"$\\]+/)),
     class_value: _ => token(
       /[A-Za-z_][A-Za-z0-9_]*(\.[A-Za-z_][A-Za-z0-9_]*)+/
     ),
     path_value: _ => token(choice(
-      /[^(\s\n\")]+/, // simple_identifier
-      seq("\"", /[^"$\\]+/, "\""), // string
+      /[^(\s\")]+/, // anything not space or newline
+      quoted(/[^"]+/), // string
     )),
 
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
@@ -283,6 +287,8 @@ module.exports = grammar({
       $.container_view_declaration,
       $.dynamic_view_declaration,
       $.styles_declaration,
+      $.theme_statement,
+      $.themes_statement,
       $.comment,
     ),
 
@@ -392,6 +398,24 @@ module.exports = grammar({
       "{",
       repeat($.style_item_statement),
       "}",
+    ),
+
+    theme_statement: $ => seq(
+      keyword("theme"),
+      $.theme_value,
+      $._newline,
+    ),
+
+    themes_statement: $ => seq(
+      keyword("themes"),
+      repeat($.theme_value),
+      $._newline,
+    ),
+
+    theme_value: $ => choice(
+      "default",
+      $.string,
+      $.path_value,
     ),
 
     // language reference and known elements:

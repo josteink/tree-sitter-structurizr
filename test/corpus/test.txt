@@ -506,6 +506,40 @@ workspace "gnu" "bar" {
     (views_declaration)))
 
 ===
+Workspace with views statement and themes
+===
+
+workspace "gnu" "bar" {
+  views {
+    theme default
+    theme "./theme.json"
+    theme ./theme.json
+    theme https://static.structurizr.com/themes/amazon-web-services-2023.01.31/icons.json
+    theme "https://static.structurizr.com/themes/amazon-web-services-2023.01.31/icons.json"
+    themes default
+    themes default ./theme.json https://static.structurizr.com/themes/amazon-web-services-2023.01.31/icons.json 
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (theme_statement (theme_value))
+      (theme_statement (theme_value (string)))
+      (theme_statement (theme_value (path_value)))
+      (theme_statement (theme_value (path_value)))
+      (theme_statement (theme_value (string)))
+      (themes_statement (theme_value))
+      (themes_statement
+        (theme_value)
+        (theme_value (path_value))
+        (theme_value (path_value))))))
+
+===
 Workspace with views and system-context-view
 ===
 

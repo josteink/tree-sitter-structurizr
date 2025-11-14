@@ -98,6 +98,14 @@
       {
         "type": "system_context_view_declaration",
         "named": true
+      },
+      {
+        "type": "theme_statement",
+        "named": true
+      },
+      {
+        "type": "themes_statement",
+        "named": true
       }
     ]
   },
@@ -1112,6 +1120,55 @@
     }
   },
   {
+    "type": "theme_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "theme_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theme_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "path_value",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "themes_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "theme_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "variable_declaration",
     "named": true,
     "fields": {
@@ -1329,6 +1386,14 @@
   },
   {
     "type": "tb",
+    "named": false
+  },
+  {
+    "type": "theme",
+    "named": false
+  },
+  {
+    "type": "themes",
     "named": false
   },
   {
