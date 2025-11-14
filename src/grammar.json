@@ -341,6 +341,10 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
         }
       ]
     },

@@ -134,11 +134,13 @@ module.exports = grammar({
     name_statement: $ => seq(
       keyword("name"),
       $.string,
+      $._newline,
     ),
 
     description_statement: $ => seq(
       keyword("description"),
       $.string,
+      $._newline,
     ),
 
     // https://docs.structurizr.com/dsl/language#docs
