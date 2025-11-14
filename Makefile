@@ -100,4 +100,8 @@ watch:
 	@echo == Watching ==
 	@fswatch -r -o . | while read; do  make test ; echo "Completed at: `date`" ; done
 
-.PHONY: all install uninstall clean build test
+build-emacs: test
+	mkdir -p $HOME/.emacs.d/tree-sitter/
+	cp structurizr.so $(HOME)/.emacs.d/tree-sitter/libtree-sitter-structurizr.so
+
+.PHONY: all install uninstall clean build test build-emacs
