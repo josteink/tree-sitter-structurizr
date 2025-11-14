@@ -255,6 +255,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "name_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "description_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "docs_statement"
         },
         {
@@ -315,6 +323,58 @@
         {
           "type": "STRING",
           "value": "flat"
+        }
+      ]
+    },
+    "name_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[nN][aA][mM][eE]"
+          },
+          "named": false,
+          "value": "name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "description_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
+          },
+          "named": false,
+          "value": "description"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
         }
       ]
     },
@@ -1390,40 +1450,6 @@
           },
           "named": false,
           "value": "default"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "comment"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
-        }
-      ]
-    },
-    "description_statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
-          },
-          "named": false,
-          "value": "description"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
         },
         {
           "type": "CHOICE",

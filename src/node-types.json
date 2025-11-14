@@ -118,6 +118,10 @@
         "named": true
       },
       {
+        "type": "description_statement",
+        "named": true
+      },
+      {
         "type": "docs_statement",
         "named": true
       },
@@ -127,6 +131,10 @@
       },
       {
         "type": "model_declaration",
+        "named": true
+      },
+      {
+        "type": "name_statement",
         "named": true
       },
       {
@@ -767,6 +775,21 @@
     }
   },
   {
+    "type": "name_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "person_declaration",
     "named": true,
     "fields": {
@@ -1250,6 +1273,10 @@
   },
   {
     "type": "model",
+    "named": false
+  },
+  {
+    "type": "name",
     "named": false
   },
   {

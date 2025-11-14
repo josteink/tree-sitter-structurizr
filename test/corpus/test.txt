@@ -27,6 +27,24 @@ workspace "gnu" "bar" {
     (string)))
 
 ===
+Empty Workspace with name and description statements
+===
+
+workspace "gnu" "bar" {
+  name "gnu name"
+  description "description text"
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (name_statement (string))
+    (description_statement (string))))
+
+===
 Workspaces, multiple
 ===
 
