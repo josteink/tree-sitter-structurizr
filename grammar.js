@@ -76,6 +76,9 @@ module.exports = grammar({
       /[^(\s\")]+/, // anything not space or newline
       quoted(/[^"]+/), // string
     )),
+    url_value: _ => token(
+      seq("\"", /https?:\/\/[^"$\\]+/, "\""),
+    ),
 
     _simple_identifier: _ => token(/[a-zA-Z_*][a-zA-Z0-9_]*/),
     dotted_identifier: $ => seq(
@@ -175,6 +178,7 @@ module.exports = grammar({
       $.relation_statement,
       $.tag_declaration,
       $.tags_declaration,
+      $.url_declaration,
       $.comment,
       $.docs_statement,
       $.adrs_statement,
@@ -253,11 +257,19 @@ module.exports = grammar({
       "tag",
       "=",
       $.string,
+      $._newline,
     ),
 
     tags_declaration: $ => seq(
       "tags",
       repeat1($.string),
+      $._newline,
+    ),
+
+    url_declaration: $ => seq(
+      "url",
+      $.url_value,
+      $._newline,
     ),
 
     configuration_declaration: $ => seq(

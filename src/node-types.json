@@ -297,6 +297,10 @@
           "named": true
         },
         {
+          "type": "url_declaration",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -379,6 +383,10 @@
         },
         {
           "type": "tags_declaration",
+          "named": true
+        },
+        {
+          "type": "url_declaration",
           "named": true
         },
         {
@@ -523,6 +531,7 @@
   {
     "type": "dsl",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -776,6 +785,10 @@
           "named": true
         },
         {
+          "type": "url_declaration",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -858,6 +871,10 @@
         },
         {
           "type": "tags_declaration",
+          "named": true
+        },
+        {
+          "type": "url_declaration",
           "named": true
         },
         {
@@ -1022,6 +1039,10 @@
           "named": true
         },
         {
+          "type": "url_declaration",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -1163,6 +1184,21 @@
       "types": [
         {
           "type": "theme_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "url_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "url_value",
           "named": true
         }
       ]
@@ -1395,6 +1431,14 @@
   {
     "type": "themes",
     "named": false
+  },
+  {
+    "type": "url",
+    "named": false
+  },
+  {
+    "type": "url_value",
+    "named": true
   },
   {
     "type": "views",

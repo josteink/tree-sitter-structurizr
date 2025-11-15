@@ -453,6 +453,32 @@ workspace "gnu" "bar" {
             (string)))))))
 
 ===
+Workspace with container with url
+===
+
+workspace "gnu" "bar" {
+  model {
+    api = container "example APIe" {
+      url "https://example.org"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (url_declaration
+            (url_value)))))))
+
+===
 Workspace with configuration
 ===
 

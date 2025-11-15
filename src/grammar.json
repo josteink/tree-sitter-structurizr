@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "structurizr",
   "rules": {
     "dsl": {
@@ -121,6 +122,26 @@
                 "value": "\""
               }
             ]
+          }
+        ]
+      }
+    },
+    "url_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\""
+          },
+          {
+            "type": "PATTERN",
+            "value": "https?:\\/\\/[^\"$\\\\]+"
+          },
+          {
+            "type": "STRING",
+            "value": "\""
           }
         ]
       }
@@ -522,6 +543,10 @@
         {
           "type": "SYMBOL",
           "name": "tags_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "url_declaration"
         },
         {
           "type": "SYMBOL",
@@ -991,6 +1016,10 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
         }
       ]
     },
@@ -1007,6 +1036,27 @@
             "type": "SYMBOL",
             "name": "string"
           }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "url_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "url"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "url_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
         }
       ]
     },
@@ -1912,5 +1962,6 @@
     "views_item_statement",
     "view_property_statement",
     "style_item_statement"
-  ]
+  ],
+  "reserved": {}
 }
