@@ -102,6 +102,6 @@ watch:
 
 build-emacs: test
 	mkdir -p $HOME/.emacs.d/tree-sitter/
-	cp structurizr.so $(HOME)/.emacs.d/tree-sitter/libtree-sitter-structurizr.so
+	cp structurizr.$(SOEXT) ~/.emacs.d/tree-sitter/libtree-sitter-structurizr.$(SOEXT)
 
 .PHONY: all install uninstall clean build test build-emacs
