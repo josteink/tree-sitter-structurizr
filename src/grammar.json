@@ -24,8 +24,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[wW][oO][rR][kK][sS][pP][aA][cC][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[wW][oO][rR][kK][sS][pP][aA][cC][eE]"
+              }
+            }
           },
           "named": false,
           "value": "workspace"
@@ -314,8 +321,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "![iI][dD][eE][nN][tT][iI][fF][iI][eE][rR][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "![iI][dD][eE][nN][tT][iI][fF][iI][eE][rR][sS]"
+              }
+            }
           },
           "named": false,
           "value": "!identifiers"
@@ -353,8 +367,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[nN][aA][mM][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[nN][aA][mM][eE]"
+              }
+            }
           },
           "named": false,
           "value": "name"
@@ -375,8 +396,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[dD][eE][sS][cC][rR][iI][pP][tT][iI][oO][nN]"
+              }
+            }
           },
           "named": false,
           "value": "description"
@@ -409,8 +437,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "![dD][oO][cC][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "![dD][oO][cC][sS]"
+              }
+            }
           },
           "named": false,
           "value": "!docs"
@@ -451,8 +486,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "![aA][dD][rR][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "![aA][dD][rR][sS]"
+              }
+            }
           },
           "named": false,
           "value": "!adrs"
@@ -493,8 +535,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[mM][oO][dD][eE][lL]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[mM][oO][dD][eE][lL]"
+              }
+            }
           },
           "named": false,
           "value": "model"
@@ -530,6 +579,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "group_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "variable_declaration"
         },
         {
@@ -563,29 +616,33 @@
       ]
     },
     "variable_declaration": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+      "type": "PREC",
+      "value": -1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
+            "type": "FIELD",
+            "name": "value",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_item_declaration"
+            }
           }
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_item_declaration"
-          }
-        }
-      ]
+        ]
+      }
     },
     "relation_statement": {
       "type": "SEQ",
@@ -684,8 +741,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[sS][oO][fF][tT][wW][aA][rR][eE][sS][yY][sS][tT][eE][mM]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[sS][oO][fF][tT][wW][aA][rR][eE][sS][yY][sS][tT][eE][mM]"
+              }
+            }
           },
           "named": false,
           "value": "softwaresystem"
@@ -758,8 +822,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+              }
+            }
           },
           "named": false,
           "value": "container"
@@ -832,8 +903,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[cC][oO][mM][pP][oO][nN][eE][nN][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][oO][mM][pP][oO][nN][eE][nN][tT]"
+              }
+            }
           },
           "named": false,
           "value": "component"
@@ -928,14 +1006,66 @@
         }
       ]
     },
+    "group_declaration": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "TOKEN",
+              "content": {
+                "type": "PREC",
+                "value": 1,
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[gG][rR][oO][uU][pP]"
+                }
+              }
+            },
+            "named": false,
+            "value": "group"
+          },
+          {
+            "type": "FIELD",
+            "name": "name",
+            "content": {
+              "type": "SYMBOL",
+              "name": "string"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_model_children"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "person_declaration": {
       "type": "SEQ",
       "members": [
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[pP][eE][rR][sS][oO][nN]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[pP][eE][rR][sS][oO][nN]"
+              }
+            }
           },
           "named": false,
           "value": "person"
@@ -1066,8 +1196,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][oO][nN][fF][iI][gG][uU][rR][aA][tT][iI][oO][nN]"
+              }
+            }
           },
           "named": false,
           "value": "configuration"
@@ -1108,8 +1245,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[sS][cC][oO][pP][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[sS][cC][oO][pP][eE]"
+              }
+            }
           },
           "named": false,
           "value": "scope"
@@ -1130,8 +1274,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[vV][iI][eE][wW][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[vV][iI][eE][wW][sS]"
+              }
+            }
           },
           "named": false,
           "value": "views"
@@ -1192,8 +1343,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[sS][yY][sS][tT][eE][mM][cC][oO][nN][tT][eE][xX][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[sS][yY][sS][tT][eE][mM][cC][oO][nN][tT][eE][xX][tT]"
+              }
+            }
           },
           "named": false,
           "value": "systemcontext"
@@ -1295,8 +1453,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[iI][nN][cC][lL][uU][dD][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[iI][nN][cC][lL][uU][dD][eE]"
+              }
+            }
           },
           "named": false,
           "value": "include"
@@ -1345,8 +1510,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[eE][xX][cC][lL][uU][dD][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[eE][xX][cC][lL][uU][dD][eE]"
+              }
+            }
           },
           "named": false,
           "value": "exclude"
@@ -1391,8 +1563,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[aA][uU][tT][oO][lL][aA][yY][oO][uU][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[aA][uU][tT][oO][lL][aA][yY][oO][uU][tT]"
+              }
+            }
           },
           "named": false,
           "value": "autolayout"
@@ -1466,8 +1645,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[lL][rR]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[lL][rR]"
+              }
+            }
           },
           "named": false,
           "value": "lr"
@@ -1475,8 +1661,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[rR][lL]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[rR][lL]"
+              }
+            }
           },
           "named": false,
           "value": "rl"
@@ -1484,8 +1677,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[tT][bB]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[tT][bB]"
+              }
+            }
           },
           "named": false,
           "value": "tb"
@@ -1493,8 +1693,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[bB][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[bB][tT]"
+              }
+            }
           },
           "named": false,
           "value": "bt"
@@ -1507,8 +1714,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[dD][eE][fF][aA][uU][lL][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[dD][eE][fF][aA][uU][lL][tT]"
+              }
+            }
           },
           "named": false,
           "value": "default"
@@ -1537,8 +1751,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[cC][oO][nN][tT][aA][iI][nN][eE][rR]"
+              }
+            }
           },
           "named": false,
           "value": "container"
@@ -1611,8 +1832,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[dD][yY][nN][aA][mM][iI][cC]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[dD][yY][nN][aA][mM][iI][cC]"
+              }
+            }
           },
           "named": false,
           "value": "dynamic"
@@ -1694,8 +1922,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[sS][tT][yY][lL][eE][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[sS][tT][yY][lL][eE][sS]"
+              }
+            }
           },
           "named": false,
           "value": "styles"
@@ -1723,8 +1958,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[tT][hH][eE][mM][eE]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[tT][hH][eE][mM][eE]"
+              }
+            }
           },
           "named": false,
           "value": "theme"
@@ -1745,8 +1987,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[tT][hH][eE][mM][eE][sS]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[tT][hH][eE][mM][eE][sS]"
+              }
+            }
           },
           "named": false,
           "value": "themes"
@@ -1804,8 +2053,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[eE][lL][eE][mM][eE][nN][tT]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[eE][lL][eE][mM][eE][nN][tT]"
+              }
+            }
           },
           "named": false,
           "value": "element"
@@ -1850,8 +2106,15 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "PATTERN",
-            "value": "[rR][eE][lL][aA][tT][iI][oO][nN][sS][hH][iI][pP]"
+            "type": "TOKEN",
+            "content": {
+              "type": "PREC",
+              "value": 1,
+              "content": {
+                "type": "PATTERN",
+                "value": "[rR][eE][lL][aA][tT][iI][oO][nN][sS][hH][iI][pP]"
+              }
+            }
           },
           "named": false,
           "value": "relationship"

@@ -22,7 +22,7 @@ function keyword(value) {
       })
       .join("")
   );
-  return alias(rx, value);
+  return alias(token(prec(1, rx)), value);
 }
 
 function optionalSeq(first, ...rest) {
@@ -174,6 +174,7 @@ module.exports = grammar({
     ),
 
     _model_item_statement: $ => choice(
+      $.group_declaration,
       $.variable_declaration,
       $.relation_statement,
       $.tag_declaration,
@@ -184,11 +185,11 @@ module.exports = grammar({
       $.adrs_statement,
     ),
 
-    variable_declaration: $ => seq(
+    variable_declaration: $ => prec(-1, seq(
       field("name", $.identifier),
       "=",
       field("value", $._item_declaration),
-    ),
+    )),
     relation_statement: $ => seq(
       field("source", $.relation_identifier),
       "->",
@@ -241,6 +242,12 @@ module.exports = grammar({
       "{",
       repeat($._model_item_statement),
       "}",
+    )),
+
+    group_declaration: $ => prec(1, seq(
+      keyword("group"),
+      field("name", $.string),
+      optional($._model_children),
     )),
 
     person_declaration: $ => seq(

@@ -285,6 +285,10 @@
           "named": true
         },
         {
+          "type": "group_declaration",
+          "named": true
+        },
+        {
           "type": "relation_statement",
           "named": true
         },
@@ -371,6 +375,10 @@
         },
         {
           "type": "docs_statement",
+          "named": true
+        },
+        {
+          "type": "group_declaration",
           "named": true
         },
         {
@@ -700,6 +708,64 @@
     }
   },
   {
+    "type": "group_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "adrs_statement",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "docs_statement",
+          "named": true
+        },
+        {
+          "type": "group_declaration",
+          "named": true
+        },
+        {
+          "type": "relation_statement",
+          "named": true
+        },
+        {
+          "type": "tag_declaration",
+          "named": true
+        },
+        {
+          "type": "tags_declaration",
+          "named": true
+        },
+        {
+          "type": "url_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
@@ -770,6 +836,10 @@
         },
         {
           "type": "docs_statement",
+          "named": true
+        },
+        {
+          "type": "group_declaration",
           "named": true
         },
         {
@@ -859,6 +929,10 @@
         },
         {
           "type": "docs_statement",
+          "named": true
+        },
+        {
+          "type": "group_declaration",
           "named": true
         },
         {
@@ -1024,6 +1098,10 @@
         },
         {
           "type": "docs_statement",
+          "named": true
+        },
+        {
+          "type": "group_declaration",
           "named": true
         },
         {
@@ -1350,6 +1428,10 @@
   },
   {
     "type": "flat",
+    "named": false
+  },
+  {
+    "type": "group",
     "named": false
   },
   {

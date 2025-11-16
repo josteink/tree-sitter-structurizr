@@ -1061,3 +1061,38 @@ workspace "nested" {
                   (string)
                   (tag_declaration
                     (string)))))))))))
+
+===
+Workspace with model with group
+===
+
+workspace "grouped" {
+  model {
+    cnt = container "cnt" {
+      group "self group"
+    }
+
+    group "group1" {
+      ss = softwareSystem "grouped"
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (model_declaration
+      (variable_declaration
+        (identifier)
+        (container_declaration
+          (string)
+          (group_declaration
+            (string))))
+      (group_declaration
+        (string)
+        (variable_declaration
+          (identifier)
+          (software_system_declaration
+            (string)))))))
