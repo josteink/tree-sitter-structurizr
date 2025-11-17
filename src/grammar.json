@@ -2225,6 +2225,5 @@
     "views_item_statement",
     "view_property_statement",
     "style_item_statement"
-  ],
-  "reserved": {}
+  ]
 }
