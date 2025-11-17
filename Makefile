@@ -9,7 +9,7 @@ VERSION := 0.1.0
 # repository
 SRC_DIR := src
 
-TS ?= tree-sitter
+TS ?= npx tree-sitter
 
 # install directory layout
 PREFIX ?= /usr/local
@@ -87,8 +87,12 @@ uninstall:
 
 clean:
 	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
+	rm -rf node_modules
 
-build:
+node_modules:
+	npm ci
+
+build: node_modules
 	$(TS) generate && $(TS) build
 
 test: build
@@ -101,7 +105,7 @@ watch:
 	@fswatch -r -o . | while read; do  make test ; echo "Completed at: `date`" ; done
 
 build-emacs: test
-	mkdir -p $HOME/.emacs.d/tree-sitter/
+	mkdir -p ~/.emacs.d/tree-sitter/
 	cp structurizr.$(SOEXT) ~/.emacs.d/tree-sitter/libtree-sitter-structurizr.$(SOEXT)
 
 .PHONY: all install uninstall clean build test build-emacs

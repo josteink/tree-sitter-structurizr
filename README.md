@@ -18,9 +18,10 @@ Not recommended for production use, but patches/improvements welcome.
 
 If you want to contribute you will (at least) need:
 
-- `tree-sitter-cli`: This can usually be installed with your system
-  package-manager, or `brew` on MacOS.
 - `GNU make` or other compatible make-version.
+- `tree-sitter-cli`: This can usually be installed with your system
+  package-manager, or `brew` on MacOS. Provided through NPM, but might
+  be handy to have available for more ad-hoc testing and tasks!
 
 With those in place, working with the grammar should be fairly simple:
 
