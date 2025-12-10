@@ -4,7 +4,7 @@
 [tree-sitter](https://github.com/tree-sitter/tree-sitter),
 for [C4 Architecture modelling](https://c4model.com).
 
-Adapted from [the official spec](https://docs.structurizr.com/dsl/language)
+Adapted from [the official spec](https://docs.structurizr.com/dsl/language).
 
 
 ## current state
@@ -32,4 +32,4 @@ With those in place, working with the grammar should be fairly simple:
 
 PRs welcome! Please be kind and make PRs small enough
 (feature-scoped?) to be possible to review and merge without
-significant risk of merge-conflicts.vg
+significant risk of merge-conflicts.
