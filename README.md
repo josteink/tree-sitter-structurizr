@@ -13,6 +13,13 @@ Under development. Incomplete. Possibly unstable.
 
 Not recommended for production use, but patches/improvements welcome.
 
+"Supported" editors, as in editors it has been tested in with various
+degrees of success:
+
+- [GNU Emacs](https://www.gnu.org/software/emacs/) via
+  [scrutrurizr-ts-mode](https://github.com/josteink/structurizr-ts-mode).
+- [Neovim](https://neovim.io) - manual setup required.
+
 
 ## contributing / development
 
