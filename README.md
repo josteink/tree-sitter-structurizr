@@ -21,6 +21,44 @@ degrees of success:
 - [Neovim](https://neovim.io) - manual setup required.
 
 
+## Neovim Setup
+
+1. Install `nvim-treesitter/nvim-treesitter` using your package manager of choice (make sure to specify the `main` branch of this package, and not the default `master` branch).
+2. Add the following to `lua/config/autocmds.lua`:
+
+```lua
+vim.filetype.add({
+  extension = {
+    dsl = "structurizr",
+  }
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { "structurizr" },
+  callback = function(args)
+    vim.treesitter.start(args.buf, 'structurizr')
+  end,
+})
+
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+  callback = function()
+    require('nvim-treesitter.parsers').structurizr = {
+      install_info = {
+        url = 'https://github.com/josteink/tree-sitter-structurizr',
+        branch = 'master',
+        queries = 'queries'
+      },
+    }
+  end
+})
+```
+
+3. Restart Neovim and run `:TSInstall structurizr`
+
+> [!NOTE]
+> Tested using LazyVim.
+
+
 ## contributing / development
 
 If you want to contribute you will (at least) need:
