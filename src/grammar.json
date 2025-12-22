@@ -668,14 +668,6 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "relation",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string"
-          }
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
@@ -683,7 +675,7 @@
               "members": [
                 {
                   "type": "FIELD",
-                  "name": "technology",
+                  "name": "relation",
                   "content": {
                     "type": "SYMBOL",
                     "name": "string"
@@ -693,12 +685,33 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "FIELD",
-                      "name": "tags",
-                      "content": {
-                        "type": "SYMBOL",
-                        "name": "string"
-                      }
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "technology",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "string"
+                          }
+                        },
+                        {
+                          "type": "CHOICE",
+                          "members": [
+                            {
+                              "type": "FIELD",
+                              "name": "tags",
+                              "content": {
+                                "type": "SYMBOL",
+                                "name": "string"
+                              }
+                            },
+                            {
+                              "type": "BLANK"
+                            }
+                          ]
+                        }
+                      ]
                     },
                     {
                       "type": "BLANK"
@@ -1907,12 +1920,25 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "view_property_statement"
+            "name": "dynamic_view_property_statement"
           }
         },
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "dynamic_view_property_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "view_property_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "relation_statement"
         }
       ]
     },
@@ -2224,6 +2250,7 @@
     "configuration_item_statement",
     "views_item_statement",
     "view_property_statement",
+    "dynamic_view_property_statement",
     "style_item_statement"
   ]
 }

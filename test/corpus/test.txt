@@ -980,6 +980,35 @@ workspace "gnu" "bar" {
         (string)))))
 
 ===
+Workspace with views, dynamic-view & relations
+===
+
+workspace "gnu" "bar" {
+  views {
+    dynamic mySystem {
+      serviceA -> serviceB
+      serviceB -> serviceC
+    }
+  }
+}
+
+---
+
+(dsl
+  (workspace_declaration
+    (string)
+    (string)
+    (views_declaration
+      (dynamic_view_declaration
+        (identifier)
+        (relation_statement
+          (identifier)
+          (identifier))
+        (relation_statement
+          (identifier)
+          (identifier))))))
+
+===
 Workspace with comments
 ===
 

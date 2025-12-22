@@ -14,6 +14,20 @@
     ]
   },
   {
+    "type": "dynamic_view_property_statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "relation_statement",
+        "named": true
+      },
+      {
+        "type": "view_property_statement",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "relation_identifier",
     "named": true,
     "subtypes": [
@@ -600,7 +614,7 @@
       "required": false,
       "types": [
         {
-          "type": "view_property_statement",
+          "type": "dynamic_view_property_statement",
           "named": true
         }
       ]
@@ -964,7 +978,7 @@
     "fields": {
       "relation": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "string",

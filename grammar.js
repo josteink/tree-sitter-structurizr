@@ -46,6 +46,7 @@ module.exports = grammar({
     $.configuration_item_statement,
     $.views_item_statement,
     $.view_property_statement,
+    $.dynamic_view_property_statement,
     $.style_item_statement,
   ],
 
@@ -143,6 +144,7 @@ module.exports = grammar({
     description_statement: $ => seq(
       keyword("description"),
       $.string,
+      optional($.comment),
       $._newline,
     ),
 
@@ -194,8 +196,8 @@ module.exports = grammar({
       field("source", $.relation_identifier),
       "->",
       field("target", $.relation_identifier),
-      field("relation", $.string),
       optionalSeq(
+        field("relation", $.string),
         field("technology", $.string),
         field("tags", $.string)
       )
@@ -379,13 +381,6 @@ module.exports = grammar({
       $._newline,
     ),
 
-    description_statement: $ => seq(
-      keyword("description"),
-      $.string,
-      optional($.comment),
-      $._newline,
-    ),
-
     container_view_declaration: $ => seq(
       keyword("container"),
       field("context", $.identifier),
@@ -409,8 +404,13 @@ module.exports = grammar({
         field("description", $.string),
       ),
       "{",
-      repeat($.view_property_statement),
+      repeat($.dynamic_view_property_statement),
       "}",
+    ),
+
+    dynamic_view_property_statement: $ => choice(
+      $.view_property_statement,
+      $.relation_statement
     ),
 
     // https://docs.structurizr.com/dsl/language#styles
